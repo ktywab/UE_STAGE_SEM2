@@ -1,0 +1,371 @@
+---
+title: "Statistique Descriptive"
+author: "Kossi Tonyi Wobubey ABOTSI"
+date: default
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r results='hide',warning=FALSE,echo=FALSE}
+library(readxl)
+library(tidyverse)
+library(FactoMineR)
+library(lsmeans)
+library(car)
+library(MASS)
+library(multcomp)
+library(emmeans)
+```
+
+### Traitement des données
+
+```{r warning=FALSE}
+# Read data from the Excel file
+data <- read_excel("data_send.xlsx")
+#Selection des colonnes utile
+data = data  %>% dplyr::select(college:classe,`taille_cm`: gender,sb:pmvpa,time,CA:`ecart_MVPA`)
+
+#Renommage des colonnes
+colnames(data)[23:24] = c("CSP_père","CSP_mère")
+
+#Caste
+data$weight_kg = as.double(data$weight_kg)
+data$taille_cm = as.double(data$taille_cm)
+data$age = as.integer(data$age)
+data$time = as.double(data$time)
+
+#Ajout de colonne des IMC
+data$IMC_kg_m2 <- data$weight_kg / (data$taille_cm * 10^-2)^2
+
+# Ajout d'une nouvelle colonne "IPS_categorie"
+data$IPS_categorie <- ifelse(data$IPS < 89, "Faible", 
+                             ifelse(data$IPS >= 90 & data$IPS <= 114, "Moyenne", "Élevée"))
+
+#Résolution du problème de facteur double
+data$gender = ifelse(data$gender != 'M' & data$gender != 'F', 'M', data$gender)
+
+head(data)
+```
+
+### 1) Les écarts de MVPA entre filles et garçons selon les CA (CA1, CA2, CA3, CA4)
+
+#### Selection des colonnes importantes
+
+```{r}
+#Selection des colonnes importantes
+data_1 = data %>% 
+  dplyr::select(gender,ecart_MVPA,CA)
+ 
+
+#Assurons nous que le types des variables qualitatives sont des facteurs
+data_1$gender = as.factor(data_1$gender)
+data_1$CA = as.factor(data_1$CA)
+
+data_1
+#write_xlsx(data_1, "data_gpt.xlsx")
+```
+
+#### Représentation des données et Ananlyse graphique de l'interaction
+
+```{r}
+boxplot(ecart_MVPA~gender*CA,data=data_1,col=c(rep('lightblue',1),rep('red',1)))
+```
+
+On remarque que généralement le mvpa des est supérieur dans les CA 1 et 2 que dans les CA 3 et 4.
+
+```{r}
+par(mfrow=c(1,2))
+with(data_1, interaction.plot(gender,CA,ecart_MVPA,col=1:2))
+with(data_1, interaction.plot(CA,gender,ecart_MVPA,col=1:4))
+```
+
+Les profils ne sont pas parallèles. Nous constatons que les modalités **2-F** et **4-F** sont éloigné de la position qu'elle auraient dû occuper si les profils étaient exactement parallèles. Les filles dans le CA 2 sont propice à un mvpa élevé. L'effet de ma variable genre sur le mvpa depend du CA.Donc ce graphique suggère une interraction entre CA et Sexe.
+
+Maintenant est ce que cette interaction observée est significative ?
+
+#### Modèle :
+
+```{r}
+table(data_1$gender,data_1$CA)
+
+```
+
+Dans notre cas , le nombre d'observation diffère selon le croisement des modalités de **CA** et **gender**. Donc nos données sont ***déséquilibrées**.* Lors de la décomposition de la variabilité, ce déséquilibre a un impact sur le calcul des différentes sommes de carrés, et par suite sur les tests qui sont construits. Il est donc nécessaire de choisir de quel type de somme de carré seront utilisés (type I, typeII, ou type III). Pour construire notre modèle j'utililise la somme des carré de type III avec la contrainte de somme des coefficients nulle.
+
+```{r}
+modele_complet_sortie = AovSum(ecart_MVPA~CA+gender+CA:gender,data = data_1)
+```
+
+### Analyse des résidus
+
+```{r}
+
+# Ajustement du modèle ANOVA
+modele_complet <- aov(ecart_MVPA ~ gender + CA + gender:CA, data = data_1)
+par(mfrow = c(2,2))
+plot(modele_complet)
+
+# Diagnostic des résidus
+# Test de normalité des résidus
+#residus <- residuals(modele_complet)
+#shapiro_test <- shapiro.test(residus)
+#print(shapiro_test)
+
+# Test d'homogénéité des variances
+#levene_test <- leveneTest(mvpa ~ gender*CA, data = data_1)
+#print(levene_test)
+
+```
+
+Le graphique en haut à gauche, qui représente en abscisse les valeurs prédites et en ordonnée les résidus permet de vérifier que la variance des résidus est similaire dans tous les groupes. Le graphique du QQ-plot, permet de vérifier que l'hypothèse de normalité des résidus est raisonnable.
+
+Avec ces hypothèses validées nous pouvons regarder les tests.
+
+### Les tests du modèle complet et des différents effets
+
+```{r}
+modele_complet_sortie
+```
+
+Pour le test de comparaison du modèle avec interaction (modèle complet) et du modèle sans interaction, on a les hypothèses :
+
+-   H0 : Il n'y a pas d'interaction.
+
+-   H1 : il y a des interactions.
+
+On observe une p-valeur inférieur au seuil de 5% donc les interactions entre le genre et CA sont significativement différent de zéro.
+
+### Test post hoc
+
+```{r}
+lsmeans_results <- lsmeans(modele_complet, pairwise ~ gender:CA, adjust='Tukey')
+summary(lsmeans_results,infer = c(TRUE, TRUE)) 
+```
+
+### Diagramme en barre de la différence des ecart_mvpa des Filles et Garçons
+
+```{r}
+# Calcul des moyennes marginales estimées et des comparaisons post hoc avec correction de Tukey
+summary_data <- summary(lsmeans_results$contrasts)
+
+# Filtrer les contrastes pour ne garder que ceux entre F et M au sein de chaque catégorie d'âge (CA)
+plot_data <- summary_data[summary_data$contrast %in% c("F CA1 - M CA1", "F CA2 - M CA2", "F CA3 - M CA3", "F CA4 - M CA4"), ]
+
+# Préparation des données pour le graphique
+plot_data <- as.data.frame(plot_data[c("contrast", "estimate", "p.value")])
+names(plot_data) <- c("Contrast", "Estimate", "P_Value")
+
+# Extraire la catégorie d'âge à partir du nom du contraste
+plot_data$CA <- sub(".*CA([0-9]+).*", "\\1", plot_data$Contrast)
+
+# Déterminer le décalage pour les étiquettes textuelles
+max_estimate <- max(plot_data$Estimate) * 0.05
+
+# Création du barplot avec légende pour les catégories d'âge
+p <- ggplot(plot_data, aes(x = CA, y = Estimate, fill = CA)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = sprintf("p = %.3f", P_Value), 
+                y = Estimate + max_estimate),  # Utilisation de la variable calculée hors de aes()
+            position = position_dodge(width = 0.99), vjust = 0) +
+  labs(title = "Comparaisons post hoc de ecart_MVPA par genre et CA",
+       x = "Champ d'apprentissage (CA)",
+       y = "Différence de Moyenne Estimée des ecart_MVPA F-M",
+       fill = "Champ d'apprentissage") +  # Ajout de la légende
+  theme_minimal() +
+  theme(text = element_text(size=12))
+
+print(p)
+
+```
+
+On remarque un écart significatif entre les écarts de mvpa à la moyenne de chaque classe des filles et garcons dans le champs 4 avec une p-valeur inférieur au seuil de 5%. Donc la moyenne des écarts à la moyenne de chaque classe des garçons est plus élevé dans le champs 4 que celui des filles. Dans les autres champs d'apprentissage cet écart de la moyenne des écart n'est pas significatif.
+
+### 2) Les écarts de MVPA entre filles et garçons selon la catégorie d’IPS du collège (élevé, moyen, faible)
+
+#### Selection des colonnes importantes
+
+```{r}
+#Selection des colonnes importantes
+data_2 = data %>% 
+  dplyr::select(gender,ecart_MVPA,IPS_categorie)
+
+#Assurons nous que le types des variables qualitatives sont des facteurs
+data_2$gender = as.factor(data_2$gender)
+data_2$IPS_categorie = as.factor(data_2$IPS_categorie)
+
+data_2
+```
+
+```{r}
+table(data_2$gender,data_2$IPS_categorie)
+```
+
+```{r}
+boxplot(ecart_MVPA~gender*IPS_categorie,data=data_2,col=c(rep('lightblue',1),rep('red',1)))
+```
+
+```{r}
+par(mfrow=c(1,2))
+with(data_2, interaction.plot(gender,IPS_categorie,ecart_MVPA,col=1:2))
+with(data_2, interaction.plot(IPS_categorie,gender,ecart_MVPA,col=1:3))
+```
+
+```{r}
+modele_complet_III = AovSum(ecart_MVPA~gender+IPS_categorie+gender:IPS_categorie,data = data_2)
+```
+
+```{r}
+# Ajustement du modèle ANOVA
+modele_complet <- aov(ecart_MVPA ~ gender + IPS_categorie + gender:IPS_categorie, data = data_2)
+
+# Résumé du modèle
+par(mfrow = c(2,2))
+plot(modele_complet)
+
+# Diagnostic des résidus
+# Test de normalité des résidus
+#residus <- residuals(modele_complet)
+#shapiro_test <- shapiro.test(residus)
+#print(shapiro_test)
+
+# Test d'homogénéité des variances
+#levene_test <- leveneTest(residus, data_2$IPS_categorie)  # Assurez-vous de remplacer 'CA' par la variable de groupement appropriée
+#print(levene_test)
+```
+
+Le graphique en haut à gauche, qui représente en abscisse les valeurs prédites et en ordonnée les résidus permet de vérifier que la variance des résidus est similaire dans tous les groupes. Le graphique du QQ-plot, permet de vérifier que l'hypothèse de normalité des résidus est raisonnable.
+
+Avec ces hypothèses validées nous pouvons regarder les tests.
+
+```{r}
+modele_complet_III
+```
+
+Les interactions entre IPS_categorie et genre et le facteur IPS_categorie ne sont pas significative, en effet leurs p-valeurs respectifs sont inférieur à 5% seuil du test. Donc le modèle optimal est celui avec le facteur genre uniquement.
+
+```{r}
+modele = aov(ecart_MVPA ~ gender, data = data_2)
+par(mfrow = c(2,2))
+plot(modele)
+```
+
+Il n'y pas de problème d'égalité de variance ou de normalité sur ce modèle.
+
+En ce qui concerne les tests :
+
+```{r}
+modele_III = AovSum(ecart_MVPA~gender,data = data_2)
+modele_III
+```
+
+### Test post hoc
+
+```{r}
+lsmeans(modele, pairwise ~ gender, adjust='Tukey')
+```
+
+Donc ici l'IPS_categorie n'a aucune influence sur les écarts de mvpa à la moyenne de chaque classe des filles et garçons.
+
+### 3) Les écarts de MVPA entre filles et garçons selon le milieu géographique (urbain, rural)
+
+#### Selection des colonnes importantes
+
+```{r}
+#Selection des colonnes importantes
+data_3 = data %>% 
+  dplyr::select(gender,ecart_MVPA,Geographie)
+
+#Assurons nous que le types des variables qualitatives sont des facteurs
+data_3$gender = as.factor(data_3$gender)
+data_3$Geographie = as.factor(data_3$Geographie)
+
+data_3
+```
+
+```{r}
+table(data_3$gender,data_3$Geographie)
+```
+
+```{r}
+boxplot(ecart_MVPA~gender*Geographie,data=data_3,col=c(rep('lightblue',1),rep('red',1)))
+```
+
+```{r}
+par(mfrow=c(1,2))
+with(data_3, interaction.plot(gender,Geographie,ecart_MVPA,col=1:2))
+with(data_3, interaction.plot(Geographie,gender,ecart_MVPA,col=1:3))
+```
+
+```{r}
+modele_complet_III = AovSum(ecart_MVPA~gender+Geographie+gender:Geographie,data = data_3)
+modele_complet_III$Ftest
+```
+
+```{r}
+# Ajustement du modèle ANOVA
+modele_complet <- aov(ecart_MVPA ~ gender + Geographie + gender:Geographie, data = data_3)
+
+# Résumé du modèle
+par(mfrow = c(2,2))
+plot(modele_complet)
+
+# Diagnostic des résidus
+# Test de normalité des résidus
+#residus <- residuals(modele_complet)
+#shapiro_test <- shapiro.test(residus)
+#print(shapiro_test)
+
+# Test d'homogénéité des variances
+#levene_test <- leveneTest(residus, data_2$IPS_categorie)  # Assurez-vous de remplacer 'CA' par la variable de groupement appropriée
+#print(levene_test)
+```
+
+Les hypothèses de normalité et d'égalité semble être validée.
+
+### Test post hoc
+
+```{r}
+
+lsmeans_results <- lsmeans(modele_complet, pairwise ~ gender:Geographie, adjust='Tukey')
+
+# Affichage des résultats avec les intervalles de confiance
+summary(lsmeans_results, infer = c(TRUE, TRUE))
+```
+
+```{r}
+# Calcul des moyennes marginales estimées et des comparaisons post hoc avec correction de Tukey
+lsmeans_results <- lsmeans(modele_complet, pairwise ~ gender:Geographie, adjust='Tukey')
+summary_data <- summary(lsmeans_results$contrasts)
+
+# Filtrer les contrastes pour ne garder que ceux entre F et M au sein de chaque niveau de géographie
+plot_data <- summary_data[summary_data$contrast %in% c("F rural - M rural", "F urbain - M urbain"), ]
+
+# Préparation des données pour le graphique
+plot_data <- as.data.frame(plot_data[c("contrast", "estimate", "p.value")])
+names(plot_data) <- c("Contrast", "Estimate", "P_Value")
+
+# Extraire le niveau de géographie à partir du nom du contraste
+plot_data$Geographie <- sub(".* (rural|urbain) -.*", "\\1", plot_data$Contrast)
+
+# Déterminer le décalage pour les étiquettes textuelles
+max_estimate <- max(plot_data$Estimate) * 0.05
+
+# Création du barplot avec légende pour les niveaux de géographie
+p <- ggplot(plot_data, aes(x = Geographie, y = Estimate, fill = Geographie)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  geom_text(aes(label = sprintf("p = %.3f", P_Value), 
+                y = Estimate + max_estimate),  # Utilisation de la variable calculée hors de aes()
+            position = position_dodge(width = 0.99), vjust = 0) +
+  labs(title = "Comparaisons post hoc de ecart_MVPA par genre et Geographie",
+       x = "Géographie",
+       y = "Différence de Moyenne Estimée des ecart_MVPA F-M",
+       fill = "Géographie") +  # Ajout de la légende
+  theme_minimal() +
+  theme(text = element_text(size=12))
+
+print(p)
+
+```
+
+On remarque un écart significatif entre les écarts de mvpa à la moyenne de chaque classe des filles et garcons dans le milieu urbain avec une p-valeur inférieur au seuil de 5%. Donc dans le milieu urbain en moyenne les écarts à la moyenne de chaque classe des garçons est plus élevé que celui des filles par contre cette différence entre la moyenne des écarts n'est pas significatif dans le milieu rural.

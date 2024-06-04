@@ -1,0 +1,103 @@
+```{r results='hide',warning=FALSE}
+library(readxl)
+library(tidyverse)
+library(FactoMineR)
+library(lsmeans)
+library(car)
+library(MASS)
+library(multcomp)
+```
+
+### Importation des données :
+
+```{r}
+# Read data from the Excel file
+data <- read_excel("données pour R_23 classes_ MEFG_22 24.xlsx")
+#Selection des colonnes utile
+data = data  %>% dplyr::select(college:classe,`taille_cm`: gender,sb:pmvpa,time,CA:`CSP_P2`)
+
+#Renommage des colonnes
+colnames(data)[23:24] = c("CSP_père","CSP_mère")
+
+#Caste
+data$weight_kg = as.double(data$weight_kg)
+data$taille_cm = as.double(data$taille_cm)
+data$age = as.integer(data$age)
+data$time = as.double(data$time)
+
+#Ajout de colonne des IMC
+data$IMC_kg_m2 <- data$weight_kg / (data$taille_cm * 10^-2)^2
+
+# Ajout d'une nouvelle colonne "IPS_categorie"
+data$IPS_categorie <- ifelse(data$IPS < 89, "Faible", 
+                             ifelse(data$IPS >= 90 & data$IPS <= 114, "Moyenne", "Élevée"))
+
+#Résolution du problème de facteur double
+data$gender = ifelse(data$gender != 'M' & data$gender != 'F', 'M', data$gender)
+
+
+#Selection des colonnes importantes
+data_1 = data %>% 
+  dplyr::select(gender,mvpa,CA)%>%
+  filter(mvpa>0)
+
+#Assurons nous que le types des variables qualitatives sont des facteurs
+data_1$gender = as.factor(data_1$gender)
+data_1$CA = as.factor(data_1$CA)
+
+data_1
+```
+
+Je vais faire ensorte d'avoir les mvpa de fille et garçon sélectionné au hazard dans un même CA. Et ensuite de calculer l'écart de mvpa entre garçon et fille selon le champ d'apprentissage.
+
+```{r}
+data_F_1 <- data_1 %>%
+  filter(gender == 'F' & CA == 1) %>%
+  mutate(key = row_number())
+
+data_M_1 <- data_1 %>%
+  filter(gender == 'M' & CA == 1) %>%
+  mutate(key = row_number())
+
+data_complet_1 = data_F_1 %>%
+  left_join(data_M_1,by = 'key') %>%
+  mutate(diff_mvpa = mvpa.y -  mvpa.x)%>%
+  dplyr::select(diff_mvpa,CA.x)
+
+
+
+
+data_complet_1
+```
+
+### Modélisation
+
+GLM de gamma car mvpa strictement positif
+
+-Fonction lien -1/Y
+
+```{r}
+modP3 = glm(mvpa~gender + CA + gender:CA, data = data_1, family = Gamma(link = "log"))
+summary(modP3)
+```
+
+```{r}
+Anova(modP3,test = "LR",type='III')
+```
+
+```{r}
+emm <- emmeans(modP3, ~ gender * CA)
+# Comparaisons par paires avec ajustement de Tukey
+pairwise <- contrast(emm, method = "pairwise", adjust = "tukey")
+
+# Afficher les résultats
+summary(pairwise,infer = c(TRUE, TRUE))
+```
+
+```{r}
+residuals_pearson <- residuals(modP3, type = "pearson")
+# Calcul du phi (facteur de dispersion)
+phi <- sum(residuals_pearson^2) / df.residual(modP3)
+phi
+
+```
