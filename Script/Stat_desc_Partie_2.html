@@ -435,6 +435,18 @@ age_moyen</code></pre>
 <pre><code>## [1] 13.65499</code></pre>
 <p>Donc l’age moyen des participants est
 <strong>13.65</strong>.</p></li>
+<li><p>Moyenne de mvpa des fille et garçon<br />
+</p>
+<pre class="r"><code>mean(data$mvpa)</code></pre>
+<pre><code>## [1] 35.13881</code></pre>
+<pre class="r"><code>data %&gt;%
+  group_by(gender) %&gt;%
+  summarise(mean(mvpa))</code></pre>
+<pre><code>## # A tibble: 2 × 2
+##   gender `mean(mvpa)`
+##   &lt;chr&gt;         &lt;dbl&gt;
+## 1 F              31.4
+## 2 M              38.5</code></pre></li>
 <li><p><strong>L’age moyen des filles et garçons</strong></p></li>
 </ol>
 <pre class="r"><code>age_sexe_data$age_moyen = age_sexe_data$age_total/age_sexe_data$effectif
@@ -566,10 +578,10 @@ ggplot(CSP_data, aes(x = CSP_Parent, y = Effectif_Participant_total, fill = sexe
 parents au moins exerce une des fonctions ci dessous :</p>
 <table>
 <colgroup>
-<col width="47%" />
-<col width="17%" />
-<col width="17%" />
-<col width="17%" />
+<col width="35%" />
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -640,13 +652,24 @@ parents au moins exerce une des fonctions ci dessous :</p>
 <div id="statistique-descriptive-pour-le-lieu-détude" class="section level3">
 <h3>Statistique descriptive pour le lieu d’étude :</h3>
 <ul>
+<li>Proportion de l’échantillon global de la population selon le
+genre</li>
+</ul>
+<pre class="r"><code>prop.table(table(data$gender))*100</code></pre>
+<pre><code>## 
+##        F        M 
+## 47.70889 52.29111</code></pre>
+<ul>
 <li><strong>Proportion de l’échantillon global de la population selon le
 CA</strong></li>
 </ul>
-<pre class="r"><code>prop.table(table(data$CA))*100</code></pre>
-<pre><code>## 
-##        1        2        3        4 
-## 12.12938 26.14555 10.24259 51.48248</code></pre>
+<pre class="r"><code>prop.table(table(data$CA,data$gender))*100</code></pre>
+<pre><code>##    
+##             F         M
+##   1  5.121294  7.008086
+##   2 13.746631 12.398922
+##   3  4.312668  5.929919
+##   4 24.528302 26.954178</code></pre>
 <table>
 <tbody>
 <tr class="odd">
@@ -687,10 +710,12 @@ l’IPS</strong></li>
 <p><strong>-IPS faible inférieur à 89</strong></p>
 <p><strong>-IPS moyenne entre 90 et 114</strong></p>
 <p><strong>-IPS élevé supérieur à 115</strong></p>
-<pre class="r"><code>prop.table(table(data$IPS_categorie))*100</code></pre>
-<pre><code>## 
-##   Élevée   Faible  Moyenne 
-## 30.99730 22.37197 46.63073</code></pre>
+<pre class="r"><code>prop.table(table(data$IPS_categorie,data$gender))*100</code></pre>
+<pre><code>##          
+##                  F        M
+##   Élevée  16.17251 14.82480
+##   Faible  11.85984 10.51213
+##   Moyenne 19.67655 26.95418</code></pre>
 <table>
 <tbody>
 <tr class="odd">
@@ -726,10 +751,11 @@ text(x = bp,  # Positions en x des barres, retournées par barplot
 <li><strong>Proportion de l’échantillon global de la population selon le
 milieu géographique</strong></li>
 </ul>
-<pre class="r"><code>prop.table(table(data$Geographie))*100</code></pre>
-<pre><code>## 
-##    rural   urbain 
-## 35.84906 64.15094</code></pre>
+<pre class="r"><code>prop.table(table(data$Geographie,data$gender))*100</code></pre>
+<pre><code>##         
+##                 F        M
+##   rural  17.78976 18.05930
+##   urbain 29.91914 34.23181</code></pre>
 <table>
 <tbody>
 <tr class="odd">

@@ -72,7 +72,16 @@ Calculons l'age moyens des filles et garçons et l'age moyen des participants.
 
     Donc l'age moyen des participants est **13.65**.
 
-2.  **L'age moyen des filles et garçons**
+2.  Moyenne de mvpa des fille et garçon\
+
+    ```{r}
+    mean(data$mvpa)
+    data %>%
+      group_by(gender) %>%
+      summarise(mean(mvpa))
+    ```
+
+3.  **L'age moyen des filles et garçons**
 
 ```{r}
 age_sexe_data$age_moyen = age_sexe_data$age_total/age_sexe_data$effectif
@@ -158,7 +167,7 @@ ggplot(CSP_data, aes(x = CSP_Parent, y = Effectif_Participant_total, fill = sexe
 Voici le tableau des effectifs des participants dont l'un de ses parents au moins exerce une des fonctions ci dessous :
 
 |                                                   | Filles | Garçons | Population Globale |
-|-----------------------------------|-------------|-------------|-------------|
+|--------------------------|----------------|----------------|----------------|
 | Agriculteurs exploitants                          | 7      | 3       | 10                 |
 | Artisans commercants chefs entreprise             | 59     | 47      | 106                |
 | Autres personnes sans activite professionnelle    | 32     | 50      | 82                 |
@@ -171,10 +180,16 @@ Voici le tableau des effectifs des participants dont l'un de ses parents au moin
 
 ### Statistique descriptive pour le lieu d'étude :
 
+-   Proportion de l'échantillon global de la population selon le genre
+
+```{r}
+prop.table(table(data$gender))*100
+```
+
 -   **Proportion de l'échantillon global de la population selon le CA**
 
 ```{r}
-prop.table(table(data$CA))*100
+prop.table(table(data$CA,data$gender))*100
 ```
 
 |                   |       |       |       |       |
@@ -210,7 +225,7 @@ text(x = barplot(proportions, plot = FALSE),  # Obtenir les positions en x des b
 **-IPS élevé supérieur à 115**
 
 ```{r}
-prop.table(table(data$IPS_categorie))*100
+prop.table(table(data$IPS_categorie,data$gender))*100
 ```
 
 |                   |            |             |           |
@@ -240,7 +255,7 @@ text(x = bp,  # Positions en x des barres, retournées par barplot
 -   **Proportion de l'échantillon global de la population selon le milieu géographique**
 
 ```{r}
-prop.table(table(data$Geographie))*100
+prop.table(table(data$Geographie,data$gender))*100
 ```
 
 |                         |            |           |

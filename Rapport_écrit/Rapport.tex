@@ -1,0 +1,236 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{fancyhdr} % Pour les en-têtes et pieds de page
+\usepackage{times} % Utilisation de la police Times New Roman
+\usepackage{geometry} % Pour gérer les marges
+\usepackage{lipsum} % Pour générer du faux texte (peut être retiré une fois le contenu réel ajouté)
+\usepackage{titlesec} % Pour personnaliser les titres de sections
+\usepackage{enumitem} % Pour personnaliser les listes
+\usepackage{pifont}
+\usepackage{adjustbox}
+
+\newcommand{\bigbullet}{\ding{108}}
+
+% Configuration des liens hypertextes
+\hypersetup{
+	colorlinks=true, % false: boxed links; true: colored links
+	linkcolor=black, % color of internal links
+	citecolor=black, % color of links to bibliography
+	filecolor=black, % color of file links
+	urlcolor=black   % color of external links
+}
+
+% Configuration des marges
+\geometry{a4paper, margin=1in}
+
+% Configuration des en-têtes et pieds de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Chapitre \thechapter}
+\fancyhead[C]{}
+\fancyhead[R]{\leftmark}
+\fancyfoot[L]{Votre Prénom Nom}
+\fancyfoot[C]{\href{mailto:votre.email@example.com}{votre.email@example.com}}
+\fancyfoot[R]{\thepage}
+
+% Configuration des titres de sections
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Large}
+\titleformat{\section}
+{\normalfont\bfseries}{\thesection}{1em}{}
+
+% Page de titre
+\title{
+	\textbf{Rapport de Stage}\\[0.5cm]
+	\textbf{Thème du Stage}\\
+	\vspace{2cm}
+	\textbf{Prénom Nom}\\
+	\vspace{1cm}
+	\href{mailto:votre.email@example.com}{votre.email@example.com}
+}
+\author{}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	% \thispagestyle{empty} % Supprime le numéro de page de la page de titre
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	% Contenu du rapport
+	\section{Introduction}
+	L'éducation physique et sportive (EPS) joue un rôle crucial dans le développement physique et mental des élèves, en leur offrant des occasions de pratiquer une activité physique régulière et structurée. Cependant, il existe des disparités notables dans l'engagement physique des élèves en fonction de divers facteurs.
+	
+	\section{Présentation théorique}
+	\subsection{Analyse de variance à 2 facteurs}
+	L'analyse de variance (ou ANOVA) est une méthode permettant de modéliser la relation entre une variable quantitative et une ou plusieurs variables qualitatives. Quand il y a une seule variable explicative, on parle d'analyse de variance à un facteur. Cette méthode permet de comparer k (k$ \geq $2) moyennes et peut donc être vue comme une extension du test de comparaison de moyenne.\\
+	
+	Ici nous allons nous intéresser au cas de deux variables explicatives qualitatives, donc à l'analyse de variance à deux facteurs, qu'on peut toutefois généraliser à un nombre quelconque de variables explicatives.\\
+	
+	\subsubsection{Modèle d'analyse de variance (ANOVA à deux facteurs)}
+	Notons A et B deux variables explicatives qualitatives, et Y une variable explicative quantitative. Soit I le nombre de modalités de A et J celui de la variable B.\\
+	Le modèle s'écrit classiquement : \\ \\
+	\begin{equation}
+		Y_{ijk} = \mu + \alpha_i + \beta_j + \gamma_{ij} + \epsilon_{ijk}, \quad i = 1, \ldots, I, \quad j = 1, \ldots, J, \quad k = 1, \ldots, K, \quad \epsilon_{ijk} \sim \mathcal{N}(0,\sigma^2),
+	\end{equation}
+	avec un effet moyen général $\mu$, $\alpha_i$ un effet de la modalité $i$ du facteur A, $\beta_j$ un effet de la modalité $j$ du facteur B, un terme d'interaction $\gamma_{ij}$ et un résidu $\epsilon_{ijk}$ avec $k$ l'indice de répétition pour le couple $(i,j)$.\\
+	
+	Le modèle n'est pas identifiable car pour pour un $(1+I+J+IJ)$-uplet $(\mu,\alpha_1,...,\alpha_I,\beta_1,...,\beta_J,\gamma_{11},...,\gamma_{ij},...,\gamma_{IJ})^T$ et $a \in \mathbf{R}$, le $(1+I+J+IJ)$-uplet $(\mu-a,\alpha_1+\frac{a}{3},...,\alpha_I+\frac{a}{3},\beta_1+\frac{a}{3},...,\beta_J+\frac{a}{3},\gamma_{11}+\frac{a}{3},...,\gamma_{ij}+\frac{a}{3},...,\gamma_{IJ}+\frac{a}{3})^T$ correspond au même modèle. On a donc besoin de contrainte sur les paramètres. Les contraintes classiques sont : 
+	\begin{itemize}
+		\item Contrainte de type analyse par cellule
+		\begin{equation}
+			\mu=0,\quad\quad \forall i \quad  \alpha_i=0, \quad\quad \forall  j  \quad \beta_j=0.
+		\end{equation}
+		\item Contrainte de type cellule de référence
+		\begin{equation}
+			\alpha_1=0,\quad\quad \beta_1=0,\quad\quad \forall i\quad \gamma_{i1}=0,\quad\quad \forall j \quad \gamma_{1j}=0
+		\end{equation}
+		\item Contrainte de type somme
+		\begin{equation}
+			\sum_{i}\alpha_i=0,\quad\quad\sum_{j}\beta_j=0,\quad\quad\forall i \quad \sum_{j}\gamma_{ij}=0,\quad\quad\forall j \quad\sum_{i}\gamma_{ij}=0
+		\end{equation}
+	\end{itemize}
+	\subsubsection{Conditions d'application}
+	Les conditions d'application de l'ANOVA sur nos données sont : 
+	\begin{itemize}
+		\item[\bigbullet] Indépendance de nos observations.
+		\item[\bigbullet] Égalité de la variance des résidus dans les différents groupes (homoscédasticité).
+		\item[\bigbullet] Normalité des résidus du modèle.
+	\end{itemize}
+	
+	\subsubsection{Test de l'interaction et de significativité des effets de facteur}
+	Pour tester l'effet d'un facteur, il est naturel de tester la nullité des paramètres associés à chaque niveau de ce facteur. Cette approche est insuffisante pour définir correctement l'hypothèse nulle testée, il faut préciser les hypothèses portant sur les autres facteurs et interactions. Si le plan est équilibré, quel que soit les hypothèses portant sur les autres variables, le test de significativité de facteur reste identique pour le même facteur mais dans le cas de plan déséquilibré ce test est parfois différents en fonction des hypothèses portant sur les autres facteurs et interactions. Donc on utilise la notion de réduction, définie ci-dessous, qui permet de bien spécifier le rôle des autres facteurs et interactions.\\
+	
+	\textbf{Définition :} Soit un modèle contenant les effets $(a_1,\ldots,a_l)$ des niveaux de facteurs $(Var_1, Var_2, \ldots, Var_l)$. On appelle réduction associée à l'introduction de $a_{q_1}, \ldots, a_{q_d}$ dans un modèle contenant les effets $a_{i_1}, \ldots, a_{i_m}$, notée $R(a_{q_1}, \ldots, a_{q_d}|\mu,a_{i_1}, \ldots, a_{i_m})$ la norme suivante : 
+	
+	\begin{equation}
+		R(a_{q_1}, \ldots, a_{q_d}|\mu,a_{i_1}, \ldots, a_{i_m}) = SCE_{i_1,i_2,\ldots,i_m,q_1,q_2,\ldots,q_d} - SCE_{i_1,i_2,\ldots,i_m},
+	\end{equation}
+	
+	avec $SCE_{i_1,i_2}$ la somme des carrés expliquée par le modèle ne contenant que les niveaux de facteurs $Var_{i_1}$, $Var_{i_2}$.\\
+	
+	Soit $\alpha = (\alpha_1,\alpha_2,\ldots,\alpha_I)$, $\beta = (\beta_1,\beta_2,\ldots,\beta_J)$ et $\gamma = (\gamma_{ij})$ avec $i = 1,\ldots,I$, $j = 1,\ldots,J$, les effets respectifs de niveaux de facteurs des modalités A, B et de l'interaction.\\
+	
+	La variabilité de Y se décompose en la somme de deux termes : 
+	\begin{equation}
+		SCT = SCE + SCR
+	\end{equation}
+	
+	On a donc
+	\begin{equation}
+		R(\alpha|\mu,\beta,\gamma) = SCE_1 - SCE_2,
+	\end{equation}
+	où $SCE_1$ et $SCE_2$ sont respectivement la somme des carrés expliquée des modèles\\
+	$(M_1) : Y_{ijk} = \mu + \alpha_i + \beta_j + \gamma_{ij} + \epsilon_{ijk}$\\
+	$(M_2) : Y_{ijk} = \mu + \beta_j + \gamma_{ij} + \epsilon_{ijk}$\\
+	pour tout $i = 1,\ldots,I$, $j = 1,\ldots,J$, $k = 1,\ldots,K$.\\
+	
+	Un test de l'effet d'un facteur est associé à une réduction donnée. Considérons la réduction $R(\alpha|\mu,\beta,\gamma)$, les hypothèses associée s'écrit : 
+	\begin{itemize}
+		\item $H_0$ = Il n'y a pas de différence significative entre le modèle ne contenant pas l' effet du facteur A et le modèle contenant les effets du facteur A, B et l'interaction.
+	   \item $H_1$ = Il y a une différence significative entre le modèle ne contenant pas l'effet du facteur A et le modèle contenant les effets du facteur A, B et l'interaction.
+	\end{itemize}
+	La statistique de test est donnée par : 
+	\begin{equation}
+		F = \frac{\frac{R(\alpha|\mu,\beta,\gamma)}{I-1}}{\frac{\text{SCR}}{n-IJ}},
+	\end{equation}
+	où 
+	\begin{itemize}
+		\item $I-1$ est le nombre de contraintes dans l'hypothèse nulle.
+		\item $IJ$ est le nombre de paramètres de notre modèle.
+	\end{itemize}
+	Sous $H_0$, $F \sim \mathcal{F}(I-1, n-IJ)$.\\
+	
+	\textbf{Quelques réductions classiques :} \\
+	Parmi les plus classiques, on trouve les réductions de type I, type II et type III.
+	
+	\begin{enumerate}[label=\alph*)]
+		\item \textbf{Somme des carrés de type I}\\
+		La réduction de type I provient de la décomposition de la somme des carrés expliquée par le modèle en réductions successives. Dans le modèle $M_1$ ci-dessus,
+		\begin{equation}
+			SCE_1 = R(\alpha,\beta,\gamma|\mu) = R(\alpha|\mu) + R(\beta|\alpha,\mu) + R(\gamma|\alpha,\beta,\mu)
+		\end{equation}
+		Le tableau d'analyse de variance correspondant au test est le suivant : 
+		\begin{table}[H]
+			\centering
+			\begin{adjustbox}{width=\textwidth}
+				\begin{tabular}{|c|c|c|c|p{8cm}|}
+					\hline
+					\multicolumn{1}{|c|}{\textbf{Effet}} & \multicolumn{1}{c|}{\textbf{Réduction type I}} & \multicolumn{1}{c|}{\textbf{DDL}} & \multicolumn{1}{c|}{\textbf{F}} & \multicolumn{1}{c|}{\textbf{Question}} \\ \hline
+					$\alpha$ & $R(\alpha|\mu)$ & $I-1$ & \large{$\frac{\frac{R(\alpha|\mu)}{I-1}}{\text{SCR}}$} & Est-il pertinent d'ajouter l'effet du facteur A à un modèle ne contenant que la constante ? \\ \hline
+					$\beta$ & $R(\beta|\mu, \alpha)$ & $J-1$ & \large{$\frac{\frac{R(\beta|\mu, \alpha)}{J-1}}{\frac{\text{SCR}}{n-IJ}}$} & Est-il pertinent d'ajouter l'effet du facteur B à un modèle contenant la constante et l'effet du facteur A ? \\ \hline
+					$\gamma$ & $R(\gamma|\mu, \alpha, \beta)$ & $(I-1) \times (J-1)$ & \large{$\frac{\frac{R(\gamma|\mu, \alpha, \beta)}{(I-1) \times (J-1)}}{\frac{\text{SCR}}{n-IJ}}$} & Est-il pertinent d'ajouter l'effet d'interaction entre les deux facteurs à un modèle contenant la constante et les effets des deux facteurs ? \\ \hline
+				\end{tabular}
+			\end{adjustbox}
+			\caption{Table d'analyse de la variance des réductions de type I du modèle M1.}
+		\end{table}
+		
+		\item \textbf{Somme des carrés de type II}\\
+		Dans la réduction de type I l'ordre d'introduction des facteurs dans le modèle leur confère un rôle différent. L'idée des types II consiste à considérer la réduction portée par un facteur conditionnellement aux autres. Donc l'ordre n'est plus important.\\
+		Le tableau d'analyse de variance correspondant au test est le suivant : 
+		\begin{table}[H]
+			\centering
+			\begin{adjustbox}{width=\textwidth}
+				\begin{tabular}{|c|c|c|c|p{8cm}|}
+					\hline
+					\textbf{Effet} & \textbf{Réduction type II} & \textbf{DDL} & \textbf{F} & \textbf{Question} \\ \hline
+					$\alpha$ & $R(\alpha|\beta, \mu)$ & $I-1$ & $\frac{R(\alpha|\beta, \mu)}{\text{SCR} / (n - IJ)}$ & Est-il pertinent d'ajouter l'effet du facteur A à un modèle contenant la constante et l'effet du facteur B ? \\ \hline
+					$\beta$ & $R(\beta|\mu, \alpha)$ & $J-1$ & $\frac{R(\beta|\mu, \alpha)}{\text{SCR} / (n - IJ)}$ & Est-il pertinent d'ajouter l'effet du facteur B à un modèle contenant la constante et l'effet du facteur A ? \\ \hline
+					$\gamma$ & $R(\gamma|\mu, \alpha, \beta)$ & $(I-1) \times (J-1)$ & $\frac{R(\gamma|\mu, \alpha, \beta)}{\text{SCR} / (n - IJ)}$ & Est-il pertinent d'ajouter l'effet de l'interaction entre les deux facteurs à un modèle contenant la constante et les effets des deux facteurs ? \\ \hline
+				\end{tabular}
+			\end{adjustbox}
+			\caption{Table d'analyse de la variance des réductions de type II du modèle M1.}
+		\end{table}
+		
+		\item \textbf{Somme des carrés de type III}\\
+		Si le test portant sur l'interaction est significatif, on utilise donc la réduction de type III, qui consiste à considérer la réduction portée par un facteur conditionnellement aux autres et à l'interaction.\\
+		Le tableau d'analyse de variance correspondant au test est le suivant :
+		\begin{table}[H]
+			\centering
+			\begin{adjustbox}{width=\textwidth}
+				\begin{tabular}{|c|c|c|c|p{8cm}|}
+					\hline
+					\textbf{Effet} & \textbf{Réduction type III} & \textbf{DDL} & \textbf{F} & \textbf{Question} \\ \hline
+					$\alpha$ & $R(\alpha|\beta, \mu, \gamma)$ & $I-1$ & $\frac{R(\alpha|\beta, \mu, \gamma)}{\text{SCR} / (n - IJ)}$ & Est-il pertinent d'ajouter l'effet du facteur A à un modèle contenant la constante, l'effet du facteur B et l'interaction ? \\ \hline
+					$\beta$ & $R(\beta|\mu, \alpha, \gamma)$ & $J-1$ & $\frac{R(\beta|\mu, \alpha, \gamma)}{\text{SCR} / (n - IJ)}$ & Est-il pertinent d'ajouter l'effet du facteur B à un modèle contenant la constante, l'effet du facteur A et l'interaction ? \\ \hline
+					$\gamma$ & $R(\gamma|\mu, \alpha, \beta)$ & $(I-1) \times (J-1)$ & $\frac{R(\gamma|\mu, \alpha, \beta)}{\text{SCR} / (n - IJ)}$ & Est-il pertinent d'ajouter l'effet de l'interaction entre les deux facteurs à un modèle contenant la constante et les effets des deux facteurs ? \\ \hline
+				\end{tabular}
+			\end{adjustbox}
+			\caption{Table d'analyse de la variance des réductions de type III du modèle M1.}
+		\end{table}
+	\end{enumerate}
+	
+	\subsubsection{Test de comparaison multiple}
+	Si aucun des facteurs ni l'interaction n'est significatif, l'étude sera conclu. Dans le cas où au moins l'un des facteurs A ou B ou l'interaction  est significatif il pourrait être intéressant de comparer les moyennes entre les différentes groupes afin de voir ce qui rend le facteur significatif.\\
+	Dans le cas où par exemple l'interaction est significatif les test auront donc les hypothèses : 
+	\begin{itemize}
+		\item $H_0 : {\theta_{i_1j_1} = \theta_{i_2j_2} }$
+		\item $H_1 : {\theta_{i_1j_1} \neq \theta_{i_2j_2} }$
+	\end{itemize}
+	où $\theta_{i_1j_1}$ et $\theta_{i_2j_2}$ sont les moyennes dans chaque groupes différents et $i_1,i_2\in{1,...,I}$ ; $j_1,j_2\in{1,...,J}$.\\
+	
+		On veut comparer tous les groupes deux à deux. En comparant m groupes, on effectue $\frac{m(m-1)}{2}$ comparaison à un niveau $\alpha$. Ce qui nous expose plus au risque de commettre une erreur de type I (Accepter à tort $H_1$ à un niveau $\alpha$). Donc pour y remédier nous allons utiliser la méthode de Tukey pour un plan équilibré et Tukey-Kramer pour un plan complet(parfaois déséquilibré).\\
+		
+		\textbf{Méthode de Tuckey(-Kramer) : }\\
+		Pour les tests de comparaison des m moyennes deux à deux l'intervalle de confiance de Tukey(-Kramer) de niveau $1-\alpha$ pour $\theta_{i_1j_1} - \theta_{i_2j_2}$ est 
+		\begin{equation}
+			\left [\bar{Y}_{i_1j_1}-\bar{Y}_{i_2j_2} \pm r^{(m,n-m)}_{(1-\alpha)}\sqrt{\frac{\hat{\sigma}^2}{2}\times(\frac{1}{n_{i_1j_1}}+\frac{1}{n_{i_2j_2}})}\right]
+		\end{equation}
+		où $r^{(m,n-m)}_{(1-\alpha)}$ est le quantile d'ordre 1-$\alpha$ d'une loi spécifique à ce problème, la Studentized range distribution.\\
+		Bien sûr il y a d'autre méthode qui ne seront pas abordé dans mon travail tels que : \textbf{Méthode de Scheffé, Méthode de Holm-Bonferroni, Correction de Bonferroni,...}
+		
+	\subsubsection{Taille d'effet}
+	La taille d'effet dans un modèle d'analyse de variance est une mesure qui permet d'évaluer l'importance des effets par rapport à la variance totale.
+	\chapter{Conclusion}
+	
+\end{document}

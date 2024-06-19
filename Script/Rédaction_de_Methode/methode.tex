@@ -1,0 +1,135 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{fancyhdr} % Pour les en-têtes et pieds de page
+\usepackage{times} % Utilisation de la police Times New Roman
+\usepackage{geometry} % Pour gérer les marges
+\usepackage{titlesec} % Pour personnaliser les titres de sections
+\usepackage{enumitem} % Pour personnaliser les listes
+\usepackage{pifont}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\newcommand{\bigbullet}{\ding{108}}
+
+% Configuration des liens hypertextes
+\hypersetup{
+	colorlinks=true, % false: boxed links; true: colored links
+	linkcolor=black, % color of internal links
+	citecolor=black, % color of links to bibliography
+	filecolor=black, % color of file links
+	urlcolor=black   % color of external links
+}
+
+% Configuration des marges
+\geometry{a4paper, margin=1in}
+
+% Configuration des en-têtes et pieds de page
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[L]{Chapitre}
+%\fancyhead[C]{}
+%\fancyhead[R]{\leftmark}
+%\fancyfoot[L]{Votre Prénom Nom}
+%\fancyfoot[C]{\href{mailto:votre.email@example.com}{votre.email@example.com}}
+%\fancyfoot[R]{\thepage}
+
+% Configuration des titres de sections
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Large}
+\titleformat{\section}
+{\normalfont\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+
+% Page de titre
+\title{
+	\textbf{Méthode de Stage}\\[0.5cm]
+	\textbf{Mesure de l'engagement des filles et garçons dans le sport}\\
+	\vspace{2cm}
+	%\textbf{Prénom Nom}\\
+	%\vspace{1cm}
+	%\href{mailto:votre.email@example.com}{votre.email@example.com}
+}
+%\author{}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\section{Description des Participants}
+	Cette étude inclut des collégiens du cycle 4 (de la 5ème à la 3ème) âgés de 11 à 15 ans, issus de classes ordinaires et ayant fourni les autorisations parentales nécessaires pour participer. Les sections sportives ainsi que les classes UPE2A et ULYSS ne sont pas incluses dans l’étude. La collecte de données se déroule dans des collèges publics situés en France, aussi bien en zones urbaines que rurales. Les écoles sont classées selon l’indice de position sociale (IPS) : écoles défavorisées (IPS < 89), écoles moyennes (IPS entre 90 et 114) et écoles favorisées (IPS > 115). Quatre champs d'apprentissage ont été ciblés et classés de 1 à 4.
+	
+	\section{Description du Protocole}
+	L'objectif de cette analyse quantitative est de mesurer les différences potentielles d’engagement physique entre les filles et les garçons pendant un cours d’éducation physique et sportive (EPS) de deux heures, et d'évaluer l'impact de trois variables : le sexe, les activités et le niveau socio-culturel de l’établissement. Les niveaux d'engagement physique sont évalués à l'aide d'accéléromètres pour déterminer le niveau de MVPA (activité physique modérée à vigoureuse) des élèves. L'objectif est d'identifier les variables ayant l'influence la plus significative sur les différences observées.
+	
+	\section{Collecte des Données}
+	Un questionnaire initial est distribué aux élèves avant le début de l’étude pour collecter des données personnelles : âge, taille, poids, fratrie, pratique d’activités physiques et autres informations socio-culturelles. Ce questionnaire a un double objectif : fournir les informations nécessaires pour programmer les accéléromètres et identifier les caractéristiques socio-culturelles des participants.
+	
+	La partie quantitative de l’étude se déroule lors d’un cours d’EPS de 2 heures. L’équipe de recherche présente brièvement l'étude sans mentionner qu'elle se concentre sur les différences entre les sexes en matière d'activité physique, afin d'éviter tout biais potentiel.
+	
+	Les élèves portent des accéléromètres ActiGraph, modèle GT3X+ (ActiGraph™, Pensacola, FL, USA), fixés à la hanche avec une ceinture élastique pendant toute la durée du cours. Les accéléromètres sont réglés sur une fréquence d'échantillonnage de 30 Hz et les données sont traitées par intervalles de 10 secondes. L'algorithme de validation du temps d'utilisation de Troiano (2007) est appliqué pour garantir la précision, et les seuils d'intensité sont déterminés selon l'étalonnage de Freedson (1998). L'extraction des données accélérométriques est réalisée à l'aide du logiciel Actilife, permettant d'extraire les niveaux de MVPA, LPA, MPA et VPA de chaque individu.
+	
+	\section{Analyse des Données}
+	Le traitement des données collectées permet d’identifier et d’analyser les différences d’engagement physique entre les sexes. Les résultats sont comparés en fonction des variables étudiées afin de déterminer lesquelles ont le plus grand impact sur les niveaux d’activité physique des élèves.
+	
+	\subsection{Analyse statistique}
+	\subsubsection{Partie I}
+	La première partie de notre analyse statistique est centrée sur les statistiques descriptives. Tout d'abord, nous calculons la moyenne de MVPA et l'âge des participants, puis la moyenne de MVPA et l'âge moyen selon le genre. Ensuite, nous calculons la proportion de filles et de garçons selon chacune des variables : le type d'activité (champ d'apprentissage), la catégorie socio-culturelle de l'établissement (catégorie d'indice de position sociale) et le milieu géographique. Nous présentons également l'effectif des participants dont l'un des parents exerce au moins une des fonctions disponibles dans la variable CSP des parents (père et mère).
+	
+	\subsubsection{Partie II}
+	La deuxième partie de notre analyse se base sur un modèle d'ANOVA à deux facteurs, incluant des variables indépendantes telles que le genre (masculin, féminin) et l'une des variables suivantes : le type d'activité (champ d'apprentissage), la catégorie socio-culturelle de l'établissement (catégorie d'indice de position sociale), ou le milieu géographique. Au total, trois modèles d'ANOVA à deux facteurs sont utilisés. La variable dépendante n'est pas la valeur de MVPA, mais plutôt l'écart de MVPA de chaque élève par rapport à la moyenne de sa classe (à justifier). Selon le respect des hypothèses de normalité et d'homoscédasticité, nous pouvons utiliser un modèle linéaire généralisé (GLM) de type gamma (car la variable dépendante est positive et continue). Le seuil de significativité des tests statistiques réalisés est de $\alpha = 5\%$. Tous les calculs et analyses sont effectués sous le logiciel R.
+	
+	Après avoir construit les modèles et vérifié les hypothèses, nous réalisons en premier lieu l'analyse post-hoc (comparaison multiple) avec la correction de Tukey pour un plan équilibré et Tukey-Kramer pour un plan complet, afin de comparer l'écart de MVPA à la moyenne des filles et garçons selon les modalités du second facteur du modèle d'ANOVA. En second lieu, pour mesurer l'effet de taille de chaque facteur et de l'interaction, nous calculons la valeur de omega-squared pour chaque facteur ou interaction, indicateur de la proportion de variance expliquée par chaque facteur/interaction de la variance totale de la variable dépendante. Enfin, à l'aide des odds ratios, nous déterminons la probabilité, selon la modalité dans laquelle nous nous positionnons pour ces variables indépendantes (champ d'apprentissage, catégorie d'IPS et milieu géographique), de l'augmentation ou de la diminution de l'écart de MVPA entre filles et garçons. Nous concluons sur les différences significatives observées et la force de ces différences.
+	
+	\subsection{Résultats statistiques descriptifs}
+	Les statistiques descriptives sont présentées dans le tableau 1. Nous avons eu au total pour notre étude 462 participants, dont 177 filles et 194 garçons. Les participants sont en moyenne âgés de 13.65 ans. 47.71\% des participants sont des filles et 52.29\% des garçons. Dans les champs d'apprentissage, nous avons 12.13\% dans le champ 1, 26.15\% dans le champ 2, 10.24\% dans le champ 3, et environ 51.48\% dans le champ 4. En ce qui concerne les catégories d'IPS, on observe 31\% dans la catégorie Faible, 22.37\% dans la catégorie Moyenne et 46.63\% dans la catégorie Élevée. Pour les milieux géographiques, on observe 64.15\% en milieu urbain et 35.85\% en milieu rural. La moyenne de MVPA durant 2 heures des participants est de 35.14 avec 31.4 pour les filles et 38.5 pour les garçons. En ce qui concerne le CSP des parents, les détails nécessaires sont présentés dans le tableau 1 avec les effectifs des participants dont l'un des parents au moins exerce une des fonctions présentées. On retrouve également dans le tableau 1 la proportion de filles et de garçons présentes dans les différents CA, catégories d'IPS et milieux géographiques. On observe en général les mêmes proportions de filles et de garçons dans les différentes variables sauf dans certaines modalités de ces variables.
+	
+	\begin{table}[H]
+		\centering
+		\label{tab:descriptive_stats}
+		\begin{tabularx}{\textwidth}{l*{3}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{Variables} & \textbf{Total} & \textbf{Filles} & \textbf{Garçons} \\
+			\midrule
+			\textbf{Participants} & \textbf{(n = 462)} & \textbf{(n = 177)} & \textbf{(n = 194)} \\
+			Participants (\%) & 100\% & 47.71\% & 52.29\%\\
+			Age moyen & 13.65 & 13.66 & 13.65 \\
+			\midrule
+			\textbf{MVPA (Moyenne)} & 35.14 & 31.4 & 38.5\\
+			\midrule
+			\textbf{CSP des parents (effectif)} \\
+			Agriculteurs exploitants & 10 & 7 & 3 \\
+			Artisans commerçants chefs entreprise & 106 & 59 & 47 \\
+			Autres personnes sans activité professionnelle & 82 & 32 & 50 \\
+			Cadres et professions intellectuelles supérieures & 99 & 52 & 47 \\
+			Employés & 213 & 90 & 123 \\
+			Ouvriers & 66 & 28 & 38 \\
+			Professions intermédiaires & 116 & 59 & 57 \\
+			Retraités & 7 & 4 & 3 \\
+			NA & 43 & 23 & 20 \\
+			\midrule
+			\textbf{Champs d'apprentissage (CA)} \\
+			CA 1 & 12.13\% & 5.121\% & 7.008\% \\
+			CA 2 & 26.15\% & 13.747\% & 12.399\% \\
+			CA 3 & 10.24\% & 4.313\% & 5.930\% \\
+			CA 4 & 52.48\% & 24.528\% & 26.954\% \\
+			\midrule
+			\textbf{Catégories socio-culturelles} \\
+			Élevée & 46.63\% & 16.173\% & 14.825\% \\
+			Faible & 22.37\% & 11.860\% & 10.512\% \\
+			Moyenne & 31\% & 19.677\% & 26.954\% \\
+			\midrule
+			\textbf{Milieu géographique} \\
+			Rural & 35.85\% & 17.790\% & 18.059\% \\
+			Urbain & 64.15\% & 29.919\% & 34.232\% \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Statistiques Descriptives}
+	\end{table}
+	
+\end{document}

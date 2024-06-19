@@ -1,0 +1,84 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{fancyhdr} % Pour les en-têtes et pieds de page
+\usepackage{times} % Utilisation de la police Times New Roman
+\usepackage{geometry} % Pour gérer les marges
+\usepackage{titlesec} % Pour personnaliser les titres de sections
+\usepackage{enumitem} % Pour personnaliser les listes
+\usepackage{pifont}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\newcommand{\bigbullet}{\ding{108}}
+
+% Configuration des liens hypertextes
+\hypersetup{
+	colorlinks=true, % false: boxed links; true: colored links
+	linkcolor=black, % color of internal links
+	citecolor=black, % color of links to bibliography
+	filecolor=black, % color of file links
+	urlcolor=black   % color of external links
+}
+
+% Configuration des marges
+\geometry{a4paper, margin=1in}
+
+% Configuration des en-têtes et pieds de page
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[L]{Chapitre}
+%\fancyhead[C]{}
+%\fancyhead[R]{\leftmark}
+%\fancyfoot[L]{Votre Prénom Nom}
+%\fancyfoot[C]{\href{mailto:votre.email@example.com}{votre.email@example.com}}
+%\fancyfoot[R]{\thepage}
+
+% Configuration des titres de sections
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Large}
+\titleformat{\section}
+{\normalfont\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+
+% Page de titre
+\title{
+	\textbf{Méthode et Résultat de Stage}\\[0.5cm]
+	\textbf{Mesure de l'engagement des filles et garçons dans le sport}\\
+	\vspace{2cm}
+	\textbf{Kossi ABOTSI}\\
+	%\vspace{1cm}
+	%\href{mailto:votre.email@example.com}{votre.email@example.com}
+}
+%\author{}
+
+\begin{document}
+	\maketitle
+	\textbf{METHODE}\\
+	
+	\textit{Description des Participants}\\
+	Cette étude inclut des collégiens du cycle 4 (de la 5ème à la 3ème) âgés de 11 à 15 ans, issus de classes ordinaires et ayant fourni les autorisations parentales nécessaires pour participer. Les sections sportives ainsi que les classes UPE2A et ULYSS ne sont pas incluses dans l’étude. La collecte de données se déroule dans des collèges publics situés en France, aussi bien en zones urbaines que rurales. Les écoles sont classées selon l’indice de position sociale (IPS) : écoles défavorisées (IPS < 89), écoles moyennes (IPS entre 90 et 114) et écoles favorisées (IPS > 115). Quatre champs d'apprentissage ont été ciblés et classés de 1 à 4.\\
+	
+	\textit{Description du Protocole}\\
+	L'objectif de cette analyse quantitative est de mesurer les différences potentielles d’engagement physique entre les filles et les garçons pendant un cours d’éducation physique et sportive (EPS) de deux heures, et d'évaluer l'impact de trois variables : le sexe, les activités et le niveau socio-culturel de l’établissement. Les niveaux d'engagement physique sont évalués à l'aide d'accéléromètres pour déterminer le niveau de MVPA (activité physique modérée à vigoureuse) des élèves. L'objectif est d'identifier les variables ayant l'influence la plus significative sur les différences observées.\\
+	
+	\textit{Collecte des Données}\\
+	Un questionnaire initial est distribué aux élèves avant le début de l’étude pour collecter des données personnelles : âge, taille, poids, fratrie, pratique d’activités physiques et autres informations socio-culturelles. Ce questionnaire a un double objectif : fournir les informations nécessaires pour programmer les accéléromètres et identifier les caractéristiques socio-culturelles des participants.
+	
+	La partie quantitative de l’étude se déroule lors d’un cours d’EPS de 2 heures. L’équipe de recherche présente brièvement l'étude sans mentionner qu'elle se concentre sur les différences entre les sexes en matière d'activité physique, afin d'éviter tout biais potentiel.
+	
+	Les élèves portent des accéléromètres ActiGraph, modèle GT3X+ (ActiGraph™, Pensacola, FL, USA), fixés à la hanche avec une ceinture élastique pendant toute la durée du cours. Les accéléromètres sont réglés sur une fréquence d'échantillonnage de 30 Hz et les données sont traitées par intervalles de 10 secondes. L'algorithme de validation du temps d'utilisation de Troiano (2007) est appliqué pour garantir la précision, et les seuils d'intensité sont déterminés selon l'étalonnage de Freedson (1998). L'extraction des données accélérométriques est réalisée à l'aide du logiciel Actilife, permettant d'extraire les niveaux de MVPA, LPA, MPA et VPA de chaque individu.\\
+	
+	\textit{Analyse statistique}\\
+	L'analyse des dponnées incluent les statistiques descriptives et un modèle d'ANOVA à deux facteurs, incluant des variables indépendantes telles que le genre (masculin, féminin) et l'une des variables suivantes : le type d'activité (champ d'apprentissage), la catégorie socio-culturelle de l'établissement (catégorie d'indice de position sociale), ou le milieu géographique. Au total, trois modèles d'ANOVA à deux facteurs sont utilisés. La variable dépendante est l'écart de MVPA de chaque élève par rapport à la moyenne de sa classe. Ce choix est motivé par le fait que certaines classes ont des temps d'activité différents et des professeurs différents, ce qui ne facilite la comparaison entre les différents groupes. Selon le respect des hypothèses de normalité (QQ-plot) et d'homoscédasticité (graphique des résidus en fonction des valeurs prédites), nous pouvons utiliser un modèle linéaire généralisé (GLM) de type gamma (variable dépendante est positive et continue). Le seuil de significativité des tests statistiques réalisés est de $\alpha = 5\%$. Tous les calculs et analyses sont effectués avec le logiciel R.
+	
+	Après avoir construit les modèles et vérifié les hypothèses, nous réalisons d'abord une analyse post-hoc (comparaison multiple) avec la correction de Tukey pour un plan équilibré et de Tukey-Kramer pour un plan complet utilisé pour comparer l'écart de MVPA à la moyenne des filles et des garçons selon les modalités du second facteur du modèle d'ANOVA. On calcul l'effet de taille de chaque facteur et de l'interaction, nous calculons la valeur de omega-squared pour chaque facteur ou interaction.\\
+	
+	\textbf{RESULTAT}
+\end{document}

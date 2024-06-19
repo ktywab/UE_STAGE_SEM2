@@ -1,0 +1,10 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {0.1}Introduction}{2}{section.0.1}%
+\contentsline {section}{\numberline {0.2}Présentation théorique}{2}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}Analyse de variance à 2 facteurs}{2}{subsection.0.2.1}%
+\contentsline {subsubsection}{Modèle d'analyse de variance (ANOVA à deux facteurs)}{2}{subsection.0.2.1}%
+\contentsline {subsubsection}{Conditions d'application}{3}{equation.0.2.4}%
+\contentsline {subsubsection}{Test de l'interaction et de significativité des effets de facteur}{3}{equation.0.2.4}%
+\contentsline {subsubsection}{Test de comparaison multiple}{5}{table.0.3}%
+\contentsline {subsubsection}{Taille d'effet}{6}{equation.0.2.10}%
+\contentsline {chapter}{\numberline {1}Conclusion}{7}{chapter.1}%
