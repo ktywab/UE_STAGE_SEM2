@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.21)  13 JUN 2024 09:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.21)  19 JUN 2024 16:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -712,14 +712,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.0.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.210 		\end{table}
-                   
-pdfTeX warning (ext4): destination with the same identifier (name{table.0.2}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.210 		\end{table}
-                   ]
+l.194 		
+        ]
 Underfull \hbox (badness 10000) in paragraph at lines 220--221
 
  []
@@ -738,12 +732,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.13202pt}.
 
 [5
+pdfTeX warning (ext4): destination with the same identifier (name{table.0.2}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.226 		\begin{equation}
+                        
 pdfTeX warning (ext4): destination with the same identifier (name{table.0.3}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.234 	\chapter
-               {Conclusion}]
+l.226 		\begin{equation}
+                        ]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.13202pt, for example:
@@ -767,11 +767,11 @@ Package rerunfilecheck Info: File `Rapport.out' has not changed.
 Here is how much of TeX's memory you used:
  14297 strings out of 474369
  227418 string characters out of 5750323
- 1949754 words of memory out of 5000000
+ 1946754 words of memory out of 5000000
  36436 multiletter control sequences out of 15000+600000
  600554 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 79i,16n,93p,793b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,16n,93p,793b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Progra
 m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/typ
@@ -786,7 +786,7 @@ nts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7
 ram Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/font
 s/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/zapfding/
 uzdr.pfb>
-Output written on Rapport.pdf (8 pages, 198677 bytes).
+Output written on Rapport.pdf (8 pages, 199186 bytes).
 PDF statistics:
  170 PDF objects out of 1000 (max. 8388607)
  29 named destinations out of 1000 (max. 500000)

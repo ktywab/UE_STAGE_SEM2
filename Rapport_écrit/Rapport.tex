@@ -119,7 +119,7 @@
 	
 	avec $SCE_{i_1,i_2}$ la somme des carrés expliquée par le modèle ne contenant que les niveaux de facteurs $Var_{i_1}$, $Var_{i_2}$.\\
 	
-	Soit $\alpha = (\alpha_1,\alpha_2,\ldots,\alpha_I)$, $\beta = (\beta_1,\beta_2,\ldots,\beta_J)$ et $\gamma = (\gamma_{ij})$ avec $i = 1,\ldots,I$, $j = 1,\ldots,J$, les effets respectifs de niveaux de facteurs des modalités A, B et de l'interaction.\\
+	Soit $\alpha , \beta$ et $\gamma $ les termes respectifs des deux facteurs principaux A, B et de l'interaction A*B.\\
 	
 	La variabilité de Y se décompose en la somme de deux termes : 
 	\begin{equation}
@@ -176,7 +176,7 @@
 		\end{table}
 		
 		\item \textbf{Somme des carrés de type II}\\
-		Dans la réduction de type I l'ordre d'introduction des facteurs dans le modèle leur confère un rôle différent. L'idée des types II consiste à considérer la réduction portée par un facteur conditionnellement aux autres. Donc l'ordre n'est plus important.\\
+		Dans la réduction de type I l'ordre d'introduction des facteurs dans le modèle leur confère un rôle différent ce qui ne représente aucun intérêt lorsque l'ordre n'est pas important pour notre sujet d'étude. L'idée des types II dans le cadre d'une anova à deux facteurs, consiste à considérer la réduction portée par un facteur ou interaction conditionnellement aux autres facteurs (principaux). Donc l'ordre n'est plus important mais aussi il prend en compte le principe qu'on ne peut pas supprimer l'effet d'un facteur principal du modèle sachant qu'il y a effet de l'interaction.\\
 		Le tableau d'analyse de variance correspondant au test est le suivant : 
 		\begin{table}[H]
 			\centering
@@ -193,7 +193,7 @@
 		\end{table}
 		
 		\item \textbf{Somme des carrés de type III}\\
-		Si le test portant sur l'interaction est significatif, on utilise donc la réduction de type III, qui consiste à considérer la réduction portée par un facteur conditionnellement aux autres et à l'interaction.\\
+		 La réduction de type III consiste à considérer la réduction portée par un facteur conditionnellement aux autres et à l'interaction.\\
 		Le tableau d'analyse de variance correspondant au test est le suivant :
 		\begin{table}[H]
 			\centering

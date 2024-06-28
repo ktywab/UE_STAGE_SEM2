@@ -1,0 +1,162 @@
+```{r results='hide',warning=FALSE,echo=FALSE}
+library(readxl)
+library(tidyverse)
+library(FactoMineR)
+library(lsmeans)
+library(car)
+library(MASS)
+library(multcomp)
+library(emmeans)
+library(effectsize)
+library(lme4)
+library(rstatix)
+```
+
+### Traitement des données : 
+
+```{r}
+# Read data from the Excel file
+data <- read_excel("données pour R_28 classes_ MEFG_22 24.xlsx")
+#Selection des colonnes utile
+data = data  %>% dplyr::select(college:classe,`taille_cm`: gender,sb:pmvpa,time,CA:CSP_P2)
+
+#Renommage des colonnes
+colnames(data)[23:24] = c("CSP_père","CSP_mère")
+
+#Caste
+data$weight_kg = as.double(data$weight_kg)
+data$taille_cm = as.double(data$taille_cm)
+data$age = as.integer(data$age)
+data$time = as.double(data$time)
+
+#Ajout de colonne des IMC
+data$IMC_kg_m2 <- data$weight_kg / (data$taille_cm * 10^-2)^2
+
+# Ajout d'une nouvelle colonne "IPS_categorie"
+data$IPS_categorie <- ifelse(data$IPS < 89, "Faible", 
+                             ifelse(data$IPS >= 90 & data$IPS <= 114, "Moyenne", "Élevée"))
+
+#Résolution du problème de facteur double
+data$gender = ifelse(data$gender != 'M' & data$gender != 'F', 'M', data$gender)
+
+#Spécification des classes selon le college (concatener college à classe)
+data <- data %>%
+  mutate(college_classe = paste(college, classe, sep = "_"))
+
+#Caste en facteur
+data$college = as.factor(data$college)
+data$college_classe = as.factor(data$college_classe)
+data$gender = as.factor(data$gender)
+data$CA = as.factor(data$CA)
+
+#Abandon de la colonne classe 
+data = data %>%
+  dplyr::select(-classe)
+
+#renommage de la colone college_classe en classe
+colnames(data)[26] = 'classe'
+
+head(data)
+```
+
+#### Valeurs aberrantes
+
+```{r}
+data %>%
+  group_by(gender,CA) %>%
+  identify_outliers(mvpa)
+```
+
+## Modèle
+
+Le modèle mixte peut être formulé comme suit :
+
+MVPAijk=β0+β1⋅genderi+β2⋅CAj+β3⋅(genderi×CAj)+uk+vk(i)+ϵijk\text{MVPA}_{ijk} = \beta_0 + \beta_1 \cdot \text{gender}_i + \beta_2 \cdot \text{CA}_j + \beta_3 \cdot (\text{gender}_i \times \text{CA}_j) + u_k + v_{k(i)} + \epsilon_{ijk}MVPAijk​=β0​+β1​⋅genderi​+β2​⋅CAj​+β3​⋅(genderi​×CAj​)+uk​+vk(i)​+ϵijk​
+
+-   MVPAijk\text{MVPA}_{ijk}MVPAijk​ : Temps en activité modérée à vigoureuse pour l'élève iii dans la classe jjj et le collège kkk.
+
+-   β0 : Intercepte global.
+
+-   β1 : Coefficient pour l'effet du genre.
+
+-   β2​ : Coefficient pour l'effet de la catégorie d'activité (CA).
+
+-   β3​ : Coefficient pour l'interaction entre le genre et la catégorie d'activité.
+
+-   uk​ : Effet aléatoire du collège k.
+
+-   vk(i)v_{k(i)}vk(i)​ : Effet aléatoire de la classe jjj au sein du collège kkk.
+
+-   ϵijk\epsilon_{ijk}ϵijk​ : Erreur résiduelle.
+
+```{r}
+# 1|classe :  l'ordonnée à l'origine est un effet aléatoire du groupe classe
+# 1|classe/college : l'ordonnée à l'origine est un effet aléatoire du groupe classe imbriqués dans college
+#model = lmer(mvpa ~ gender*CA + (1|classe/college),data = data)
+
+modP3 = glm(mvpa~gender + CA + gender:CA, data = data, family = Gamma(link = "log"))
+summary(modP3)
+#summary(model)
+```
+
+#### Test de comparaison de modèle
+
+```{r}
+Anova(modP3,test = 'LR',type = 'II')
+```
+
+Le modèle complet (avec interaction) est le plus interressant.
+
+La deviance expliqué par le modèle contenant que la constante est 146.25 et celle expliqué par le modèle complet est 111.61. Ce qui laisse penser que peu de déviance est expliqué par le modèle.
+
+En réalité le CA est beaucoup lié à la classe et au collège auquel appartient cette classe.
+
+### Prise en compte des effets aléatoires 
+
+On introduit un effet aléatoire pour capturer la variabilité de MVPA entre les classe au sein des collèges.
+
+```{r}
+#model complet
+model = glmer(mvpa~gender*CA + (CA|classe/college),family = Gamma(link = "log"),data=data)
+summary(model)
+```
+
+## Choix du model optimal
+
+```{r}
+#model sans effet aléatoire sur CA
+model_1 = glmer(mvpa~gender*CA + (1|classe/college),family = Gamma(link = "log"),data=data)
+
+summary(model_1)
+#anova(model,model_1)
+```
+
+Ne converge pas.
+
+```{r}
+model_2 = lmer(mvpa~gender*CA + (CA|classe/college),data=data)
+
+summary(model_2)
+AIC(model_2)
+```
+
+```{r}
+model_3 = lmer(mvpa~gender*CA + (1|classe/college),data=data)
+
+summary(model_3)
+AIC(model_3)
+```
+
+### Comparaison multiple 
+
+```{r}
+Anova(model_3,type = 'II')
+```
+
+```{r}
+# Comparaisons des moyennes marginales estimées
+emmeans_results <- emmeans(model_3, ~ gender*CA)
+
+# Comparaisons par paires avec correction de Bonferroni
+pairs(emmeans_results, adjust = "Tukey")
+```
