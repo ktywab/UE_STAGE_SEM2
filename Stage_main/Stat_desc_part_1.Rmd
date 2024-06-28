@@ -1,0 +1,287 @@
+---
+title: "Statistique Descriptive"
+author: "Kossi Tonyi Wobubey ABOTSI"
+date: default
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r results='hide',warning=FALSE}
+library(readxl)
+library(tidyverse)
+```
+
+### Importation des données :
+
+```{r}
+# install.packages("readxl")
+
+# Load the readxl package
+
+
+# Read data from the Excel file
+data <- read_excel("données_complètes_9_classes_MEFG_stagiaire_tatistique.xlsx")
+
+#Selection des colonnes utile
+data = data  %>% dplyr::select(collège:classe,`taille cm`: gender,sb:pmvpa,time,CA:`CSP mère`)
+
+#Renommage des colonnes
+colnames(data)[3:4] = c("taille_cm","weight_kg")
+colnames(data)[22:23] = c("CSP_père","CSP_mère")
+
+#Ajout de colonne des IMC
+data$IMC_kg_m2 <- data$weight_kg / (data$taille_cm * 10^-2)^2
+
+# Ajout d'une nouvelle colonne "IPS_categorie"
+data$IPS_categorie <- ifelse(data$IPS < 89, "Faible", 
+                             ifelse(data$IPS >= 90 & data$IPS <= 114, "Moyenne", "Élevée"))
+
+# Print the first few rows of the data to verify
+head(data)
+```
+
+### **Statistique descriptive de la Population**
+
+-   **Age selon le sexe**
+
+```{r}
+data_1 = as.data.frame(table(data$age,data$gender))
+
+names(data_1) = c("age","sexe","Effectif_Participant")
+
+data_1
+```
+
+Mise en place d'un barplot pour visualiser le nombre de participant par age.
+
+```{r}
+# Créer le diagramme en barres empilées
+ggplot(data_1, aes(x = age, y = Effectif_Participant, fill = sexe)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Age", y = "Effectif_Participant", fill = "Sexe", title = "Répartition de la Quantité de Participants par classe et sexe") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))  # Centrer le titre
+```
+
+Dans cette observation, il est noté une prédominance de garçons âgés de 13 et 14 ans par rapport aux filles, tandis qu'il y a pratiquement autant de filles que de garçons âgés de 12 et 16 ans. De plus, il y a davantage de filles de 15 ans, tandis qu'il n'y a que des garçons de 17 ans et seulement des filles de 18 ans. On a une observation total de **161**.
+
+Calculons maintenant l'age moyens des filles et garçons et l'age moyen des participants.
+
+1.  **Age moyen des Participants**
+
+    ```{r}
+    age_sexe_data=data %>%
+      group_by(gender) %>%
+      summarise(age_total = sum(age),effectif = n())
+
+    age_moyen = sum(age_sexe_data$age_total)/sum(age_sexe_data$effectif)
+
+    age_moyen
+    ```
+
+    Donc l'age moyen des participants est **13.68**.
+
+2.  **L'age moyen des filles et garçons**
+
+```{r}
+age_sexe_data$age_moyen = age_sexe_data$age_total/age_sexe_data$effectif
+
+
+age_sexe_data
+```
+
+| Sexe          | F     | M     | Participant(les deux sexes) |
+|---------------|-------|-------|-----------------------------|
+| **Age Moyen** | 13.73 | 13.65 | 13.68                       |
+
+-   **IMC selon le sexe**
+
+```{r}
+data %>%
+  group_by(gender) %>%
+  summarise(IMC_tot = mean(na.omit(IMC_kg_m2)))
+  
+```
+
+```{r, warning=FALSE}
+# Créer le diagramme en boîte pour l'IMC par classe et sexe
+ggplot(data, aes(x = gender, y = IMC_kg_m2, fill = gender)) +
+  geom_boxplot() +
+  labs(x = "gender", y = "IMC (kg/m^2)", fill = "Sexe") +
+  theme_minimal()
+```
+
+En moyenne l'IMC des garçons est légèrement plus grand que celui des filles. Récapitulatif dans le tableau suivant :
+
+|         | Population globale | Filles | Garçons |
+|---------|--------------------|--------|---------|
+| **IMC** | 20.56              | 20.23  | 20.83   |
+
+-   **CSP du père**
+
+```{r}
+data_1 = as.data.frame(table(data$CSP_père,data$gender))
+
+names(data_1) = c("CSP","sexe","Effectif_Participant")
+
+data_1
+```
+
+```{r}
+# Créer le diagramme en barres empilées avec les modalités en abscisses affichées verticalement
+ggplot(data_1, aes(x = CSP, y = Effectif_Participant, fill = sexe)) +
+  geom_bar(stat = "identity") +
+  labs(x = "CSP_père", y = "Effectif_Participant", fill = "Sexe", title = "Répartition de la Quantité de Participants par CSP_père et sexe") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))  # Modifier l'angle des modalités sur l'axe x
+
+```
+
+Avec un total de **149** observation,Il est observé une prédominance des garçons dont le père exerce les professions d'artisans, commerçants, chefs d'entreprise, employés ou ouvriers par rapport aux filles. On constate également qu'il y a presque autant de filles que de garçons dont le père occupe des postes de cadres et professions intellectuelles supérieures, ainsi que chez ceux sans emploi. En revanche, on ne retrouve que des filles parmi les enfants dont le père est sans activité, et exclusivement des garçons parmi ceux dont le père est retraité ou exerce une autre profession.
+
+-   **CSP de la mère**
+
+```{r}
+data_2 = as.data.frame(table(data$CSP_mère,data$gender))
+names(data_2) = c("CSP","sexe","Effectif_Participant")
+
+data_2
+```
+
+```{r}
+# Créer le diagramme en barres empilées avec les modalités en abscisses affichées verticalement
+ggplot(data_2, aes(x = CSP, y = Effectif_Participant, fill = sexe)) +
+  geom_bar(stat = "identity") +
+  labs(x = "CSP_mère", y = "Effectif_Participant", fill = "Sexe", title = "Répartition de la Quantité de Participants par CSP_mère et sexe") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))  # Modifier l'angle des modalités sur l'axe x
+```
+
+Sur un échantillon total de **132** observations, il est remarqué que les garçons sont majoritaires lorsque leur mère exerce des professions telles que artisans, commerçants, chefs d'entreprise, employés ou ouvriers, en comparaison avec les filles. D'autre part, il est observé qu'il y a presque autant de filles que de garçons lorsque la mère occupe des postes de cadres et professions intellectuelles supérieures, profession intermédiaire, est sans activité ou occupe d'autres fonctions. En revanche, tous les enfants dont la mère est infirmière et sans emploi sont des filles.
+
+-   **CSP des parents**
+
+```{r}
+CSP_data = rbind(data_1,data_2)
+
+colnames(CSP_data)[1] = "CSP_Parent"
+
+#Groupage par IPS du parent et Sexe
+CSP_data = CSP_data %>% 
+  group_by(CSP_Parent,sexe)  %>% 
+  mutate(Effectif_Participant_total=sum(Effectif_Participant))  %>% 
+  dplyr::select(-Effectif_Participant)
+
+
+CSP_data
+```
+
+```{r}
+# Créer le diagramme en barres empilées avec les modalités en abscisses affichées verticalement
+ggplot(CSP_data, aes(x = CSP_Parent, y = Effectif_Participant_total, fill = sexe)) +
+  geom_bar(stat = "identity") +
+  labs(x = "CSP_Parent", y = "Effectif_Participant_total", fill = "Sexe", title = "Répartition de la Quantité de Participants par CSP_Parent et sexe") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))  # Modifier l'angle des modalités sur l'axe x
+```
+
+Sur un échantillon total de 149 observations, on constate une prédominance des garçons lorsque l'un de leurs parents exerce les professions telles que artisan, commerçant, chef d'entreprise, employé, ouvrier ou retraité. En revanche, une majorité de filles est observée lorsque l'un des parents est sans activité, sans emploi ou infirmier. Par ailleurs, on remarque une répartition presque égale entre les filles et les garçons lorsque l'un des parents exerce une autre activité, est cadre et une professionnel intellectuelle supérieure ou professionnel intermédiaire.
+
+### Statistique descriptive pour le lieu d'étude :
+
+-   **Proportion de l'échantillon global de la population selon le CA**
+
+```{r}
+prop.table(table(data$CA))*100
+```
+
+|                   |       |       |       |       |
+|-------------------|-------|-------|-------|-------|
+| **CA**            | **1** | **2** | **3** | **4** |
+| **Proportion(%)** | 9.938 | 22.36 | 8.01  | 59.63 |
+
+Illustration avec un barplot :
+
+```{r}
+# Calculer les proportions
+proportions <- prop.table(table(data$CA)) * 100
+
+# Créer le barplot
+barplot(proportions, main = "Proportion des valeurs dans la colonne CA", 
+        xlab = "Valeurs de CA", ylab = "Proportion", col = "skyblue",
+        ylim=c(0, max(proportions) + 10))  # Ajuster ylim pour éviter le chevauchement du texte
+
+# Ajouter les proportions sur les barres
+text(x = barplot(proportions, plot = FALSE),  # Obtenir les positions en x des barres
+     y = proportions+2,  # Décaler légèrement le texte au-dessus des barres
+     labels = sprintf("%.2f%%", proportions),  # Formater les proportions avec deux décimales
+     pos = 3)  # Positionner le texte au-dessus des barres (3 = au-dessus)
+
+```
+
+-   **Proportion de l'échantillon global de la population selon l'IPS**
+
+**-IPS faible inférieur à 89**
+
+**-IPS moyenne entre 90 et 114**
+
+**-IPS élevé supérieur à 115**
+
+```{r}
+prop.table(table(data$IPS_categorie))*100
+```
+
+|                   |            |             |           |
+|-------------------|------------|-------------|-----------|
+| **IPS**           | **Faible** | **Moyenne** | **Elevé** |
+| **Proportion(%)** | 22.36      | 77.64       | 0         |
+
+Illustration avec un barplot
+
+```{r}
+# Calculer les proportions pour la colonne IPS_categorie
+proportions_ips = prop.table(table(data$IPS_categorie)) * 100
+
+# Créer le barplot pour IPS_categorie
+bp <- barplot(proportions_ips, main = "Proportion des valeurs dans la colonne IPS", 
+              xlab = "Valeurs de IPS", ylab = "Proportion", col = "skyblue",
+              ylim = c(0, max(proportions_ips) + 10))  # Ajuster ylim pour éviter le chevauchement du texte
+
+# Ajouter les proportions sur les barres
+text(x = bp,  # Positions en x des barres, retournées par barplot
+     y = proportions_ips + 2,  # Ajouter un petit espace au-dessus de chaque barre pour le texte
+     labels = sprintf("%.2f%%", proportions_ips),  # Formater les proportions avec deux décimales
+     pos = 3)  # Poser le texte au-dessus des barres
+
+```
+
+-   **Proportion de l'échantillon global de la population selon le milieu géographique**
+
+```{r}
+prop.table(table(data$Géographie))*100
+```
+
+|                         |            |           |
+|-------------------------|------------|-----------|
+| **Milieu géographique** | **urbain** | **rural** |
+| **Proportion(%)**       | 98.14      | 1.86      |
+
+Illustration avec un barplot
+
+```{r}
+# Calculer les proportions pour la colonne Géographie
+proportions_geo = prop.table(table(data$Géographie)) * 100
+
+# Créer le barplot pour Géographie
+bp_geo <- barplot(proportions_geo, main = "Proportion des valeurs dans la colonne Géographie", 
+                  xlab = "Milieu géographique", ylab = "Proportion", col = "skyblue",
+                  ylim = c(0, max(proportions_geo) + 10))  # Ajuster ylim pour éviter le chevauchement du texte
+
+# Ajouter les proportions sur les barres
+text(x = bp_geo,  # Positions en x des barres, retournées par barplot
+     y = proportions_geo + 0.25,  # Ajouter un petit espace au-dessus de chaque barre pour le texte
+     labels = sprintf("%.2f%%", proportions_geo),  # Formater les proportions avec deux décimales
+     pos = 3)  # Poser le texte au-dessus des barres
+
+```

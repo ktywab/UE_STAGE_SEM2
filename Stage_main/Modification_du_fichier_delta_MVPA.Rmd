@@ -1,0 +1,32 @@
+```{r results='hide',warning=FALSE,echo=FALSE}
+library(readxl)
+library(tidyverse)
+library(writexl)
+
+
+# Read data from the Excel file
+data <- read_excel("données pour R_28 classes_ MEFG_22 24.xlsx")
+
+
+#Ajout de colonne moyenne de MVPA par classe
+data_send = data  %>%
+  dplyr::filter(mvpa>0) %>%
+  group_by(date,college,classe) %>%
+  mutate(moyenne_MVPA_classe = mean(mvpa))
+
+#Ajout de la colonne ecart des éleves à la moyenne dans chaque classe
+data_send = data_send %>% 
+  mutate(ecart_MVPA = mvpa - moyenne_MVPA_classe)
+
+#Mettre les lignes contenant les NA dans ces colonnes à la fin du document
+data_send <- data_send %>%
+  mutate(has_na = is.na(mvpa) | is.na(gender) | is.na(CA) | is.na(cat_IPS) | is.na(Geographie)) %>%
+  arrange(has_na) %>%
+  dplyr::select(-has_na)
+
+# Écrire le DataFrame dans un fichier Excel
+write_xlsx(data_send, "data_send.xlsx")
+
+#Vérification de ligne contenant NA de ces colonnes 
+data_send %>% filter(is.na(mvpa) | is.na(gender) | is.na(CA) | is.na(cat_IPS) | is.na(Geographie))
+```
