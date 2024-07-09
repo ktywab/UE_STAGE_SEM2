@@ -100,7 +100,7 @@ Dans notre cas , le nombre d’observation diffère selon le croisement des moda
 
 # Ajustement du modèle ANOVA
 modele_complet <- aov(ecart_MVPA ~ gender + CA + gender:CA,contrasts = list(gender = contr.sum,CA = contr.sum),data = data_1)
-par(mfrow = c(2,2))
+par(mfrow = c(1,1))
 plot(modele_complet)
 
 # Diagnostic des résidus
@@ -122,6 +122,11 @@ Avec ces hypothèses validées nous pouvons regarder les tests.
 ### Les tests du modèle complet et des différents effets
 
 ```{r}
+mod0 = aov(ecart_MVPA ~ 1,data = data_1)
+anova(mod0,modele_complet)
+```
+
+```{r}
 Anova(modele_complet,type='II')
 ```
 
@@ -140,15 +145,18 @@ lsmeans_results <- lsmeans(modele_complet, pairwise ~ gender:CA, adjust='Tukey')
 summary(lsmeans_results,infer = c(TRUE, TRUE)) 
 ```
 
-|                                                                             | CA1             | CA2             | CA3            | CA4              |
-|------------------------------|-----------|-----------|-----------|-----------|
-| Ecart entre fille et gaçon des ecarts à la moyenne de mvpa de chaque classe | -4.4548         | -1.4898         | -1.7470        | -9.7647          |
-| Intervalle de confiance                                                     | -12.010 à 3.100 | -6.4730 à 3.493 | -6.759 à 3.265 | -13.286 à -6.244 |
-| P-valeur                                                                    | 0.6235          | 0.9850          | 0.96           | 0.000            |
+|                                                                                   | CA1             | CA2             | CA3            | CA4              |
+|-----------------------|-------------|-------------|-------------|-------------|
+| Ecart moyen entre fille et gaçon des ecarts à la moyenne de mvpa de chaque classe | -4.4548         | -1.4898         | -1.7470        | -9.7647          |
+| Intervalle de confiance                                                           | -12.010 à 3.100 | -6.4730 à 3.493 | -6.759 à 3.265 | -13.286 à -6.244 |
+| P-valeur                                                                          | 0.6235          | 0.9850          | 0.96           | 0.000            |
 
 ### Diagramme en barre de la différence des ecart_mvpa des Filles et Garçons
 
 ```{r}
+
+
+
 # Calcul des moyennes marginales estimées et des comparaisons post hoc avec correction de Tukey
 summary_data <- summary(lsmeans_results$contrasts)
 
@@ -162,6 +170,9 @@ names(plot_data) <- c("Contrast", "Estimate", "SE", "P_Value")
 # Extraire le champ d'apprentissage à partir du nom du contraste
 plot_data$CA <- sub(".*CA([0-9]+).*", "\\1", plot_data$Contrast)
 
+# Convertir CA en facteur pour assurer la distinction des couleurs
+plot_data$CA <- as.factor(plot_data$CA)
+
 # Déterminer le décalage pour les étiquettes textuelles
 max_estimate <- max(plot_data$Estimate) * 0.05
 
@@ -171,16 +182,15 @@ p <- ggplot(plot_data, aes(x = CA, y = Estimate, fill = CA)) +
   geom_text(aes(label = sprintf("p = %.3f\nSE = %.2f", P_Value, SE), 
                 y = Estimate + max_estimate),  # Utilisation de la variable calculée hors de aes()
             position = position_dodge(width = 0.99), vjust = 0) +
-  labs(title = "Post hoc Comparisons of MVPA Differences by Gender and CA",
-       x = "Learning Field (CA)",
-       y = "Estimated Mean Difference of MVPA Differences F-M",
-       fill = "Learning Field") +  # Ajout de la légende
+  labs(title = "Comparaisons post hoc des différences de MVPA par sexe et CA",
+       x = "Champ d'apprentissage (CA)",
+       y = "Différence moyenne estimée de MVPA F-M",
+       fill = "Champ d'apprentissage") +  # Ajout de la légende
   theme_minimal() +
-  theme(text = element_text(size=12))
+  theme(text = element_text(size = 12)) +
+  scale_fill_manual(values = c("1" = "yellow", "2" = "orange", "3" = "red", "4" = "purple"))
 
-print(p)
-
-
+plot(p)
 ```
 
 On remarque un écart significatif entre les écarts de mvpa à la moyenne de chaque classe des filles et garcons dans le champs 4 avec une p-valeur inférieur au seuil de 5%. Donc la moyenne des écarts à la moyenne de chaque classe des garçons est plus élevé dans le champs 4 que celui des filles. Dans les autres champs d'apprentissage cet écart de la moyenne des écart n'est pas significatif.
@@ -287,7 +297,7 @@ Comme dans la section précedente on se retrouve devant un plan très déséquil
 modele_complet <- aov(ecart_MVPA ~ gender + IPS_categorie + gender:IPS_categorie,contrasts = list(gender = contr.sum,IPS_categorie = contr.sum), data = data_2)
 
 # Résumé du modèle
-par(mfrow = c(2,2))
+par(mfrow = c(1,1))
 plot(modele_complet)
 
 # Diagnostic des résidus
@@ -306,6 +316,11 @@ Le graphique en haut à gauche, qui représente en abscisse les valeurs prédite
 Avec ces hypothèses validées nous pouvons regarder les tests.
 
 ```{r}
+mod0 = aov(ecart_MVPA ~ 1,data = data_2)
+anova(mod0,modele_complet)
+```
+
+```{r}
 Anova(modele_complet,type='II')
 ```
 
@@ -315,7 +330,7 @@ Les interactions entre IPS_categorie et genre et le facteur IPS_categorie ne son
 
 ```{r}
 modele = aov(ecart_MVPA ~ gender, data = data_2)
-par(mfrow = c(2,2))
+par(mfrow = c(1,1))
 plot(modele)
 ```
 
@@ -368,7 +383,11 @@ data_3$Geographie = as.factor(data_3$Geographie)
 data_3
 ```
 
-### Effectifs par groupe 
+### Effectifs par groupe
+
+```{r}
+table(data_3$gender,data_3$Geographie)
+```
 
 ```{r}
 table(data_3$gender,data_3$Geographie)
@@ -393,7 +412,7 @@ with(data_3, interaction.plot(Geographie,gender,ecart_MVPA,col=1:3))
 modele_complet <- aov(ecart_MVPA ~ gender + Geographie + gender:Geographie,contrasts = list(gender = contr.sum,Geographie = contr.sum), data = data_3)
 
 # Résumé du modèle
-par(mfrow = c(2,2))
+par(mfrow = c(1,1))
 plot(modele_complet)
 
 # Diagnostic des résidus
@@ -408,6 +427,11 @@ plot(modele_complet)
 ```
 
 Les hypothèses de normalité et d'égalité de variance des résidus semble être validée.
+
+```{r}
+mod0 = aov(ecart_MVPA ~ 1,data = data_3)
+anova(mod0,modele_complet)
+```
 
 ```{r}
 Anova(modele_complet,type='II')
@@ -426,7 +450,7 @@ summary(lsmeans_results, infer = c(TRUE, TRUE))
 ```
 
 |                                                                             | rural         | urbain           |     |     |
-|-----------------------------------|----------|----------|----------|----------|
+|--------------------------|------------|------------|------------|------------|
 | Ecart entre fille et gaçon des ecarts à la moyenne de mvpa de chaque classe | -2.44         | -8.06            |     |     |
 | Intervalle de confiance                                                     | -5.49 à 0.602 | -10.761 à -5.350 |     |     |
 | P-valeur                                                                    | 0.1650        | 0.000            |     |     |
@@ -443,28 +467,29 @@ plot_data <- summary_data[summary_data$contrast %in% c("F rural - M rural", "F u
 
 # Préparation des données pour le graphique
 plot_data <- as.data.frame(plot_data[c("contrast", "estimate", "SE", "p.value")])
-names(plot_data) <- c("Contrast", "Estimate", "SE", "P_Value")
+names(plot_data) <- c("Contraste", "Estimation", "SE", "Valeur_P")
 
 # Extraire le niveau de géographie à partir du nom du contraste
-plot_data$Geographie <- sub(".* (rural|urbain) -.*", "\\1", plot_data$Contrast)
+plot_data$Geographie <- sub(".* (rural|urbain) -.*", "\\1", plot_data$Contraste)
 
 # Déterminer le décalage pour les étiquettes textuelles
-max_estimate <- max(plot_data$Estimate) * 0.05
+max_estimate <- max(plot_data$Estimation) * 0.05
 
 # Création du barplot avec légende pour les niveaux de géographie
-p <- ggplot(plot_data, aes(x = Geographie, y = Estimate, fill = Geographie)) +
+p <- ggplot(plot_data, aes(x = Geographie, y = Estimation, fill = Geographie)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  geom_text(aes(label = sprintf("p = %.3f\nSE = %.2f", P_Value, SE), 
-                y = Estimate + max_estimate),  # Utilisation de la variable calculée hors de aes()
+  geom_text(aes(label = sprintf("p = %.3f\nSE = %.2f", Valeur_P, SE), 
+                y = Estimation + max_estimate),  # Utilisation de la variable calculée hors de aes()
             position = position_dodge(width = 0.99), vjust = 0) +
-  labs(title = "Post hoc Comparisons of MVPA Differences by Gender and Geography",
-       x = "Geography",
-       y = "Estimated Mean Difference of MVPA Differences F-M",
-       fill = "Geography") +  # Ajout de la légende
+  labs(title = "Comparaisons post hoc des différences de moyenne  ecart_MVPA",
+       x = "Géographie",
+       y = "Différence moyenne estimée de MVPA F-M",
+       fill = "Géographie") +  # Ajout de la légende
   theme_minimal() +
   theme(text = element_text(size=12))
 
 print(p)
+
 
 ```
 
@@ -549,7 +574,7 @@ table(data_4$gender,data_4$CSP_père)
 table(data_4$gender,data_4$CSP_mère)
 ```
 
-### Graphique des interactions : 
+### Graphique des interactions :
 
 ```{r}
 #par(mfrow=c(1,2))

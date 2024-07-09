@@ -1,0 +1,23 @@
+\documentclass[french]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\usepackage{babel}
+
+\begin{document}
+	\section{Méthode}
+	
+	L'objectif est de connaître les écarts de MVPA entre les filles et les garçons selon les champs d'apprentissage (CA), la catégorie socio-économique du collège (IPS) et le milieu géographique. Nous notons des effets aléatoires des classes dans les différents collèges. Pour ce faire, nous réalisons plusieurs modèles et choisissons le meilleur selon le critère d'information d'Akaike (AIC).
+	
+	Premièrement, nous utilisons un modèle linéaire mixte avec la variable dépendante MVPA, les effets fixes CA et genre, et des effets aléatoires classe et collège en lien avec CA (de manière hiérarchique). 
+	
+	Deuxièmement, nous appliquons un modèle linéaire mixte avec un effet aléatoire de classe et de collège portant sur l'intercept.
+	
+	Si l'hypothèse de normalité n'est pas vérifiée, nous utilisons un modèle linéaire mixte généralisé (GLMM) avec une distribution gamma. 
+	
+	Premièrement, un GLMM gamma avec la variable dépendante MVPA, les effets fixes CA et genre, et des effets aléatoires classe et collège en lien avec CA (de manière hiérarchique).
+	
+	Deuxièmement, un GLMM gamma avec la même variable dépendante et les mêmes effets fixes, mais avec des effets aléatoires classe et collège portant sur l'intercept (de manière hiérarchique).
+	
+\end{document}
