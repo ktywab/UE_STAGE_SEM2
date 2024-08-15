@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Modèle ANOVA}{4}{0}{2}
+\beamer@sectionintoc {3}{Résultats et discussion}{4}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{4}{0}{4}

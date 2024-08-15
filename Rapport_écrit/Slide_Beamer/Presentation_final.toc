@@ -1,0 +1,16 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Problématique}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Objectifs}{7}{0}{1}
+\beamer@sectionintoc {2}{Méthode}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{Présentation des données}{10}{0}{2}
+\beamer@subsectionintoc {2}{2}{Modèle}{11}{0}{2}
+\beamer@subsectionintoc {2}{3}{Validation des hypothèses}{19}{0}{2}
+\beamer@subsectionintoc {2}{4}{Type d'ANOVA}{23}{0}{2}
+\beamer@sectionintoc {3}{Résultats et discussion}{31}{0}{3}
+\beamer@subsectionintoc {3}{1}{Tableau de contingence}{32}{0}{3}
+\beamer@subsectionintoc {3}{2}{Test de validité du modèle complet}{33}{0}{3}
+\beamer@subsectionintoc {3}{3}{Test de validité de sous modèle}{34}{0}{3}
+\beamer@subsectionintoc {3}{4}{Test de comparaison multiple}{35}{0}{3}
+\beamer@subsectionintoc {3}{5}{Taille d'effet}{37}{0}{3}
+\beamer@subsectionintoc {3}{6}{Limites des résultats}{38}{0}{3}
+\beamer@sectionintoc {4}{Conclusion et perspective}{41}{0}{4}

@@ -1,0 +1,195 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{fancyhdr} % For headers and footers
+\usepackage{times} % Use Times New Roman font
+\usepackage{geometry} % For margin management
+\usepackage{titlesec} % For customizing section titles
+\usepackage{enumitem} % For customizing lists
+\usepackage{pifont}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{pgf}
+\usepackage{tikz}
+\newcommand{\bigbullet}{\ding{108}}
+
+\newcommand{\convertimage}[1]{%
+	\begingroup
+	\tikz\node[inner sep=0pt] {\includegraphics[width=0.9\textwidth]{#1}};%
+	\endgroup
+}
+
+% Hyperlink configuration
+\hypersetup{
+	colorlinks=true, % false: boxed links; true: colored links
+	linkcolor=black, % color of internal links
+	citecolor=black, % color of links to bibliography
+	filecolor=black, % color of file links
+	urlcolor=black   % color of external links
+}
+
+% Margin configuration
+\geometry{a4paper, margin=1in}
+
+% Header and footer configuration
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[L]{Chapter}
+%\fancyhead[C]{}
+%\fancyhead[R]{\leftmark}
+%\fancyfoot[L]{Your First Name Last Name}
+%\fancyfoot[C]{\href{mailto:your.email@example.com}{your.email@example.com}}
+%\fancyfoot[R]{\thepage}
+
+% Section title configuration
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Large}
+\titleformat{\section}
+{\normalfont\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+
+% Title page
+\title{
+	\textbf{Method and Internship Results}\\[0.5cm]
+	\textbf{Measurement of Boys' and Girls' Engagement in Sports}\\
+	\vspace{2cm}
+	\textbf{Kossi ABOTSI}\\
+	%\vspace{1cm}
+	%\href{mailto:your.email@example.com}{your.email@example.com}
+}
+%\author{}
+
+\begin{document}
+	\maketitle
+	\textbf{METHOD}\\
+	
+	\textit{Description of Participants}\\
+	This study includes middle school students in grades 7 to 9 (ages 11 to 15) from regular classes who provided the necessary parental consent to participate. Sports sections and UPE2A and ULYSS classes are not included in the study. Data collection takes place in public middle schools located in both urban and rural areas of France. Schools are classified according to the Social Position Index (SPI): disadvantaged schools (SPI < 89), average schools (SPI between 90 and 114), and advantaged schools (SPI > 115). Four learning fields were targeted and classified from 1 to 4.\\
+	
+	\textit{Protocol Description}\\
+	The aim of this quantitative analysis is to measure potential differences in physical engagement between boys and girls during a two-hour physical education (PE) class, and to evaluate the impact of three variables: gender, activities, and the socio-cultural level of the institution. Physical engagement levels are assessed using accelerometers to determine the students' level of MVPA (moderate to vigorous physical activity). The goal is to identify the variables having the most significant influence on the observed differences.\\
+	
+	\textit{Data Collection}\\
+	An initial questionnaire is distributed to students before the start of the study to collect personal data: age, height, weight, siblings, physical activities, and other socio-cultural information. This questionnaire serves a dual purpose: to provide the necessary information for programming the accelerometers and to identify the socio-cultural characteristics of the participants.
+	
+	The quantitative part of the study takes place during a 2-hour PE class. The research team briefly presents the study without mentioning that it focuses on gender differences in physical activity to avoid potential bias.
+	
+	The students wear ActiGraph accelerometers, model GT3X+ (ActiGraph™, Pensacola, FL, USA), attached to the hip with an elastic belt throughout the class. The accelerometers are set to a sampling frequency of 30 Hz and data is processed in 10-second intervals. Troiano's (2007) wear time validation algorithm is applied to ensure accuracy, and intensity thresholds are determined according to Freedson's (1998) calibration. Accelerometer data extraction is performed using Actilife software, allowing the extraction of each individual's MVPA, LPA, MPA, and VPA levels.\\
+	
+	\textit{Statistical Analysis}\\
+	Data analysis includes descriptive statistics and three two-factor ANOVA models, including independent variables such as gender (male, female) and one of the following variables: type of activity (learning field), socio-cultural category of the institution (Social Position Index category) and geographical area. The dependent variable is the deviation of each student's MVPA from the class average. This choice is motivated by the fact that some classes have different activity times and different teachers, which does not facilitate comparison between different groups. Depending on the fulfillment of normality assumptions (QQ-plot) and homoscedasticity (residuals plot against predicted values), a generalized linear model (GLM) of the gamma type (dependent variable is positive and continuous) will be preferred over the ANOVA model in case of violations. The significance threshold for statistical tests performed is $\alpha = 5\%$. The effect size is considered small when $\omega^2\approx$.01, medium when $\omega^2\approx$.06, and large when $\omega^2\approx$.14 (Cohen, 1988). All calculations and analyses are performed with R software (Version 4.3.3).
+	
+	After constructing the models and verifying the assumptions, in case of significant interaction, we conduct a post-hoc analysis (multiple comparisons) with Tukey's correction for a balanced design and Tukey-Kramer for a complete design to compare the MVPA deviation from the average of boys and girls according to the modalities of the second factor of the ANOVA model. We calculate the effect size (omega-squared) for each factor or interaction to understand the magnitude of the difference observed between groups.\\
+	
+	\textbf{RESULTS}\\
+	
+	\textit{Participant Characteristics}\\
+	
+	Descriptive statistics are presented in Table 1. In total, we had 462 participants in our study, including 220 girls and 242 boys. Participants were on average 13.65 years old. 47.71\% of the participants were girls and 52.29\% were boys. In terms of learning fields, 12.13\% were in field 1, 26.15\% in field 2, 10.24\% in field 3, and approximately 51.48\% in field 4. Regarding SPI categories, 31\% were in the low category, 22.37\% in the average category, and 46.63\% in the high category. For geographical areas, 64.15\% were in urban areas and 35.85\% in rural areas. The average MVPA during 2 hours for participants was 35.14 minutes, with 31.4 minutes for girls and 38.5 minutes for boys. Details about the parents' socio-professional categories are presented in Table 1, along with the number of participants whose parents hold one of the listed occupations. Table 1 also shows the proportion of girls and boys in different learning fields, SPI categories, and geographical areas. Generally, the proportions of girls and boys in the different variables are similar, except for certain modalities of these variables.
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{l*{3}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{Variables} & \textbf{Total} & \textbf{Girls} & \textbf{Boys} \\
+			\midrule
+			\textbf{Participants} & \textbf{(n = 462)} & \textbf{(n = 220)} & \textbf{(n = 242)} \\
+			Participants (\%) & 100\% & 47.61\% & 52.39\%\\
+			Average Age & 13.65 & 13.66 & 13.65 \\
+			\midrule
+			\textbf{MVPA (Average)} & 35.14 & 31.4 & 38.5\\
+			\midrule
+			\textbf{Parents' Socio-Professional Categories (Number)} \\
+			Farmers & 10 & 7 & 3 \\
+			Craftsmen, Shopkeepers, Business Owners & 106 & 59 & 47 \\
+			Other Inactive Persons & 82 & 32 & 50 \\
+			Executives and Higher Intellectual Professions & 99 & 52 & 47 \\
+			Employees & 213 & 90 & 123 \\
+			Workers & 66 & 28 & 38 \\
+			Intermediate Professions & 116 & 59 & 57 \\
+			Retirees & 7 & 4 & 3 \\
+			NA & 43 & 23 & 20 \\
+			\midrule
+			\textbf{Learning Fields} \\
+			Field 1 (performance sports) & 12.13\% & 5.12\% & 7.01\% \\
+			Field 2 (outdoor sports) & 26.15\% & 13.75\% & 12.40\% \\
+			Field 3 (artistic activities) & 10.24\% & 4.31\% & 5.93\% \\
+			Field 4 (opposition activities) & 52.48\% & 24.53\% & 26.95\% \\
+			\midrule
+			\textbf{Socio-Cultural Categories} \\
+			High & 46.63\% & 16.17\% & 14.83\% \\
+			Low & 22.37\% & 11.86\% & 10.51\% \\
+			Average & 31\% & 19.68\% & 26.95\% \\
+			\midrule
+			\textbf{Geographical Area} \\
+			Rural & 35.85\% & 17.79\% & 18.06\% \\
+			Urban & 64.15\% & 29.92\% & 34.23\% \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Descriptive Statistics of Participants}
+		\label{tab:descriptive_stats}
+	\end{table}
+	
+	\textit{Engagement Difference by Gender}\\
+	
+	Analysis of PE engagement differences between boys and girls shows significant differences between the two genders due to a significant effect of the gender factor (F = 49.381, p < 0.05, $\omega^2$ = 0.09). Table 2 of mean comparisons indicates that boys engage more than girls.\\
+	
+	\textit{Engagement Difference by Gender according to Learning Fields}\\
+	When analyzing the impact of learning fields on MVPA differences between girls and boys, results show that the interaction between gender and learning fields is significant (F = 8.325, p < 0.05, $\omega^2$ = 0.05). Table 2 indicates that MVPA differences vary between girls and boys (boys engage more than girls) in different learning fields.\\
+	
+	\begin{figure}[H]
+		\centering
+		\convertimage{res_2-modified.PNG}
+		\caption{Mean Comparison between Girls and Boys according to Learning Fields}
+		\label{fig:mon_image}
+	\end{figure}
+	
+	In Learning Fields 1, 2, and 3, there are no significant differences between girls and boys. However, in Learning Field 4, boys engage significantly more than girls.\\
+	
+	\textit{Engagement Difference by Gender according to SPI}\\
+	Analysis of MVPA differences between girls and boys according to the SPI category of schools shows that neither the SPI factor nor the interaction between gender and SPI is significant (p > 0.05). Thus, gender remains the main factor influencing PE engagement differences, regardless of the school's SPI.\\
+	
+	\textit{Engagement Difference by Gender according to Geographical Area}\\
+	Analysis by geographical area (urban vs. rural) shows that the interaction between gender and geographical area is significant (F = 12.6145, p < 0.05, $\omega^2$ = 0.02). Table 2 shows that MVPA differences between girls and boys are significantly higher in urban areas than in rural areas. 
+	
+	\begin{figure}[H]
+		\centering
+		\convertimage{res_3-modified.PNG}
+		\caption{Mean Comparison between Girls and Boys according to Geographical Area}
+		\label{fig:mon_image2}
+	\end{figure}
+	
+	In urban areas, boys have significantly higher MVPA differences than girls (p < 0.001), whereas in rural areas, this difference is not significant (cf. figure 2).
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{l*{4}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{} & \textbf{Estimated Mean Difference between Girls and Boys (F-M)} & \textbf{95\% Confidence Interval} & \textbf{P-value} & \textbf{Effect Size} \\
+			\midrule
+			\textbf{Overall} & -5.57 & -7.13 to -4.01 & < 0.0001 & 0.09 \\
+			\midrule
+			\textbf{Learning Fields} & & & & 0.05 \\
+			Field 1 & -4.4548 & -12.010 to 3.100 & 0.6235 & \\
+			Field 2 & -1.4898 & -6.4730 to 3.493 & 0.9850 & \\
+			Field 3 & -1.7470 & -6.759 to 3.265 & 0.96 & \\
+			Field 4 & -9.7647 & -13.286 to -6.244 & < 0.0001 & \\
+			\midrule
+			\textbf{Geographical Area} & & & & 0.02 \\
+			Rural & -2.44 & -5.49 to 0.602 & 0.1650 & \\
+			Urban & -8.06 & -10.761 to -5.350 & < 0.0001 & \\
+			\bottomrule
+		\end{tabularx}
+		\caption{Mean Comparison between Girls and Boys}
+		\label{tab:mean_comparison}
+	\end{table}
+	
+\end{document}

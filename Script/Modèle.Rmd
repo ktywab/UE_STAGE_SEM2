@@ -17,11 +17,16 @@ library(MASS)
 library(multcomp)
 library(emmeans)
 library(effectsize)
+library(rstatix)
+library(effsize)
 ```
 
 ### Traitement des données
 
 ```{r warning=FALSE}
+#############################################################
+###########Ecart de MVPA entre filles et garçons#############
+#############################################################
 # Read data from the Excel file
 data <- read_excel("data_send.xlsx")
 #Selection des colonnes utile
@@ -49,6 +54,85 @@ data$gender = ifelse(data$gender != 'M' & data$gender != 'F', 'M', data$gender)
 data
 ```
 
+### Ecart de MVPA entre filles et garçons
+
+```{r}
+data %>%
+  group_by(gender) %>%
+  summarise(Effectif = n(),
+            Moyenne_ecart_MVPA = mean(ecart_MVPA),
+            Ecart_type = sd(ecart_MVPA, na.rm = TRUE),
+            min = min(ecart_MVPA, na.rm = TRUE),
+            max = max(ecart_MVPA, na.rm = TRUE))
+```
+
+### Hypothèses du modèle
+
+#### Normalité de ecart_MVPA dans les duex groupes
+
+```{r}
+data_F = data %>%
+  filter(gender == 'F')
+data_M = data %>%
+  filter(gender == 'M')
+
+# Créer le QQ plot avec des titres
+par(mfrow = c(1,2))
+qqnorm(data_F$ecart_MVPA, main = "QQ Plot pour les Filles")
+qqline(data_F$ecart_MVPA, col = "red")
+
+qqnorm(data_M$ecart_MVPA, main = "QQ Plot pour les Garçons")
+qqline(data_M$ecart_MVPA, col = "red")
+
+```
+
+```{r}
+identify_outliers(data_M %>% dplyr:: select(ecart_MVPA))
+```
+
+#### Egalité des variances dans les deux groupes
+
+```{r}
+test_F = var.test(data_F$ecart_MVPA,data_M$ecart_MVPA)
+print(test_F)
+```
+
+#### Test de student
+
+```{r}
+t_test = t.test(ecart_MVPA~gender,data = data,var.equal = TRUE)
+print(t_test)
+```
+
+### Taille d'effet
+
+```{r}
+#data  %>% cohens_d(ecart_MVPA~gender)
+taille_effet = cohen.d(data_M$ecart_MVPA,data_F$ecart_MVPA)
+print(taille_effet)
+```
+
+### Effet confondant de l'age :
+
+```{r}
+data = na.omit(data)
+data %>%
+  group_by(gender) %>%
+  summarise(sd(age))
+
+
+```
+
+```{r}
+boxplot(age~gender,data=data,col=c(rep('lightblue',1),rep('red',1)))
+
+boxplot(age~gender*CA,data=data,col=c(rep('lightblue',1),rep('red',1)))
+
+boxplot(age~gender*cat_IPS,data=data,col=c(rep('lightblue',1),rep('red',1)))
+
+boxplot(age~gender*Geographie,data=data,col=c(rep('lightblue',1),rep('red',1)))
+```
+
 ### 1) Les écarts de MVPA entre filles et garçons selon les CA (CA1, CA2, CA3, CA4)
 
 #### Selection des colonnes importantes
@@ -65,6 +149,18 @@ data_1$CA = as.factor(data_1$CA)
 
 data_1
 #write_xlsx(data_1, "data_gpt.xlsx")
+```
+
+#### Statistique descriptive
+
+```{r}
+data_1 %>% 
+  group_by(gender,CA) %>% 
+  summarise( Effectif = n(),
+             moyenne = mean(ecart_MVPA),
+             std = sd(ecart_MVPA, na.rm = TRUE),
+            min = min(ecart_MVPA, na.rm = TRUE),
+            max = max(ecart_MVPA, na.rm = TRUE))
 ```
 
 #### Représentation des données et Ananlyse graphique de l'interaction
@@ -100,7 +196,7 @@ Dans notre cas , le nombre d’observation diffère selon le croisement des moda
 
 # Ajustement du modèle ANOVA
 modele_complet <- aov(ecart_MVPA ~ gender + CA + gender:CA,contrasts = list(gender = contr.sum,CA = contr.sum),data = data_1)
-par(mfrow = c(1,1))
+par(mfrow = c(2,2))
 plot(modele_complet)
 
 # Diagnostic des résidus
@@ -146,7 +242,7 @@ summary(lsmeans_results,infer = c(TRUE, TRUE))
 ```
 
 |                                                                                   | CA1             | CA2             | CA3            | CA4              |
-|-----------------------|-------------|-------------|-------------|-------------|
+|---------------|---------------|---------------|---------------|---------------|
 | Ecart moyen entre fille et gaçon des ecarts à la moyenne de mvpa de chaque classe | -4.4548         | -1.4898         | -1.7470        | -9.7647          |
 | Intervalle de confiance                                                           | -12.010 à 3.100 | -6.4730 à 3.493 | -6.759 à 3.265 | -13.286 à -6.244 |
 | P-valeur                                                                          | 0.6235          | 0.9850          | 0.96           | 0.000            |
@@ -165,32 +261,33 @@ plot_data <- summary_data[summary_data$contrast %in% c("F CA1 - M CA1", "F CA2 -
 
 # Préparation des données pour le graphique
 plot_data <- as.data.frame(plot_data[c("contrast", "estimate", "SE", "p.value")])
-names(plot_data) <- c("Contrast", "Estimate", "SE", "P_Value")
+names(plot_data) <- c("Contraste", "Estimation", "SE", "Valeur_P")
 
 # Extraire le champ d'apprentissage à partir du nom du contraste
-plot_data$CA <- sub(".*CA([0-9]+).*", "\\1", plot_data$Contrast)
+plot_data$CA <- sub(".*CA([0-9]+).*", "\\1", plot_data$Contraste)
 
 # Convertir CA en facteur pour assurer la distinction des couleurs
 plot_data$CA <- as.factor(plot_data$CA)
 
 # Déterminer le décalage pour les étiquettes textuelles
-max_estimate <- max(plot_data$Estimate) * 0.05
+max_estimate <- max(plot_data$Estimation) * 0.05
 
 # Création du barplot avec légende pour les champs d'apprentissage
-p <- ggplot(plot_data, aes(x = CA, y = Estimate, fill = CA)) +
+p <- ggplot(plot_data, aes(x = CA, y = Estimation, fill = CA)) +
   geom_bar(stat = "identity", position = position_dodge()) +
-  geom_text(aes(label = sprintf("p = %.3f\nSE = %.2f", P_Value, SE), 
-                y = Estimate + max_estimate),  # Utilisation de la variable calculée hors de aes()
+  geom_text(aes(label = sprintf("p = %.3f\nSE = %.2f", Valeur_P, SE), 
+                y = Estimation + max_estimate),  # Utilisation de la variable calculée hors de aes()
             position = position_dodge(width = 0.99), vjust = 0) +
-  labs(title = "Comparaisons post hoc des différences de MVPA par sexe et CA",
+  labs(title = "Comparaisons post hoc des différences de moyenne ecart_MVPA",
        x = "Champ d'apprentissage (CA)",
-       y = "Différence moyenne estimée de MVPA F-M",
+       y = "Différence moyenne estimée de ecart_MVPA F-M",
        fill = "Champ d'apprentissage") +  # Ajout de la légende
   theme_minimal() +
   theme(text = element_text(size = 12)) +
   scale_fill_manual(values = c("1" = "yellow", "2" = "orange", "3" = "red", "4" = "purple"))
 
 plot(p)
+
 ```
 
 On remarque un écart significatif entre les écarts de mvpa à la moyenne de chaque classe des filles et garcons dans le champs 4 avec une p-valeur inférieur au seuil de 5%. Donc la moyenne des écarts à la moyenne de chaque classe des garçons est plus élevé dans le champs 4 que celui des filles. Dans les autres champs d'apprentissage cet écart de la moyenne des écart n'est pas significatif.
@@ -269,6 +366,16 @@ data_2
 ### **Effectifs par groupe :**
 
 ```{r}
+data_2 %>% 
+  group_by(gender,IPS_categorie) %>% 
+  summarise( Effectif = n(),
+             moyenne = mean(ecart_MVPA),
+             std = sd(ecart_MVPA, na.rm = TRUE),
+            min = min(ecart_MVPA, na.rm = TRUE),
+            max = max(ecart_MVPA, na.rm = TRUE))
+```
+
+```{r}
 table(data_2$gender,data_2$IPS_categorie)
 ```
 
@@ -297,7 +404,7 @@ Comme dans la section précedente on se retrouve devant un plan très déséquil
 modele_complet <- aov(ecart_MVPA ~ gender + IPS_categorie + gender:IPS_categorie,contrasts = list(gender = contr.sum,IPS_categorie = contr.sum), data = data_2)
 
 # Résumé du modèle
-par(mfrow = c(1,1))
+par(mfrow = c(2,2))
 plot(modele_complet)
 
 # Diagnostic des résidus
@@ -386,6 +493,16 @@ data_3
 ### Effectifs par groupe
 
 ```{r}
+data_3 %>% 
+  group_by(gender,Geographie) %>% 
+  summarise( Effectif = n(),
+             moyenne = mean(ecart_MVPA),
+             std = sd(ecart_MVPA, na.rm = TRUE),
+            min = min(ecart_MVPA, na.rm = TRUE),
+            max = max(ecart_MVPA, na.rm = TRUE))
+```
+
+```{r}
 table(data_3$gender,data_3$Geographie)
 ```
 
@@ -412,7 +529,7 @@ with(data_3, interaction.plot(Geographie,gender,ecart_MVPA,col=1:3))
 modele_complet <- aov(ecart_MVPA ~ gender + Geographie + gender:Geographie,contrasts = list(gender = contr.sum,Geographie = contr.sum), data = data_3)
 
 # Résumé du modèle
-par(mfrow = c(1,1))
+par(mfrow = c(2,2))
 plot(modele_complet)
 
 # Diagnostic des résidus
@@ -450,7 +567,7 @@ summary(lsmeans_results, infer = c(TRUE, TRUE))
 ```
 
 |                                                                             | rural         | urbain           |     |     |
-|--------------------------|------------|------------|------------|------------|
+|---------------|---------------|---------------|---------------|---------------|
 | Ecart entre fille et gaçon des ecarts à la moyenne de mvpa de chaque classe | -2.44         | -8.06            |     |     |
 | Intervalle de confiance                                                     | -5.49 à 0.602 | -10.761 à -5.350 |     |     |
 | P-valeur                                                                    | 0.1650        | 0.000            |     |     |
@@ -483,7 +600,7 @@ p <- ggplot(plot_data, aes(x = Geographie, y = Estimation, fill = Geographie)) +
             position = position_dodge(width = 0.99), vjust = 0) +
   labs(title = "Comparaisons post hoc des différences de moyenne  ecart_MVPA",
        x = "Géographie",
-       y = "Différence moyenne estimée de MVPA F-M",
+       y = "Différence moyenne estimée de ecart_MVPA F-M",
        fill = "Géographie") +  # Ajout de la légende
   theme_minimal() +
   theme(text = element_text(size=12))

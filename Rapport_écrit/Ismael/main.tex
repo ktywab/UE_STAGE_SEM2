@@ -1,0 +1,268 @@
+\documentclass{article}
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[french]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{graphicx} 
+\usepackage[backend=biber,style=numeric,sorting=nyt]{biblatex} % ICI POUR LA BIBLIO
+\addbibresource{references.bib} % Nom du fichier .bib % ICI POUR LA BIBLIO
+\lstset{
+  language=R,                     
+  basicstyle=\footnotesize\ttfamily, 
+  numbers=left,                   
+  numberstyle=\tiny\color{gray},  
+  stepnumber=1,                   
+  numbersep=5pt,                  
+  backgroundcolor=\color{white},  
+  showspaces=false,               
+  showstringspaces=false,         
+  showtabs=false,                
+  frame=none,                   
+  tabsize=2,                   
+  captionpos=b,                   
+  breaklines=true,                
+  breakatwhitespace=false,        
+  title=\lstname,                 
+  keywordstyle=\color{blue},      
+  commentstyle=\color{purple},    
+  stringstyle=\color{red},        
+  escapeinside={\%*}{*)},           
+  literate={
+    {²}{{\textsuperscript{2}}}1
+    {⁴}{{\textsuperscript{4}}}1
+    {⁶}{{\textsuperscript{6}}}1
+    {⁸}{{\textsuperscript{8}}}1
+    {€}{{\euro{}}}1
+    {é}{{\'e}}1
+    {è}{{\`e}}1
+    {ê}{{\^{e}}}1
+    {ë}{{\¨e}}1
+    {É}{{\'E}}1
+    {Ê}{{\^{E}}}1
+    {û}{{\^{u}}}1
+    {ù}{{\`u}}1
+    {â}{{\^{a}}}1
+    {à}{{\`a}}1
+    {á}{{\'a}}1
+    {ã}{{\~a}}1
+    {Á}{{\'A}}1
+    {Â}{{\^{A}}}1
+    {Ã}{{\~A}}1
+    {ç}{{\c{c}}}1
+    {Ç}{{\c{C}}}1
+    {õ}{{\~o}}1
+    {ó}{{\'o}}1
+    {ô}{{\^{o}}}1
+    {Õ}{{\~O}}1
+    {Ó}{{\'O}}1
+    {Ô}{{\^{O}}}1
+    {î}{{\^{i}}}1
+    {Î}{{\^{I}}}1
+    {í}{{\'i}}1
+    {Í}{{\~Í}}1
+  },
+  morekeywords={*,...}
+}
+
+
+\begin{document}
+
+
+
+\begin{titlepage}
+
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west, inner sep=15pt] at (current page.north west) {\includegraphics[width=10cm]{TG.jpg}};
+    \end{tikzpicture}
+
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north east, inner sep=10pt] at (current page.north east) {\includegraphics[width=10cm]{virus.png}};
+    \end{tikzpicture}
+   
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south, inner sep=30pt] at (current page.south) {\includegraphics[width=6cm]{ufr.jpeg}};
+    \end{tikzpicture}
+
+    
+    \vspace*{7cm}
+
+
+    \begin{center}
+       {\Huge Rapport de stage} \par
+       \vspace{1cm}
+       {\Large Simulation de données de survie dans le cadre d’essais cliniques} \par
+       \vspace{1cm}
+       {\Huge TAHAR Jimmy} \par
+    \end{center}
+     
+       \vspace{2cm}
+       {\Large Tutrice référente : Madame Martin} \par
+       \vspace{0.5cm}
+       {\Large Enseignant référent : GARDES Laurent} \par
+
+    \vspace{4cm}
+    
+    \begin{center}
+       Du 22 Janvier 2024 au 22 Juillet 2024
+    \end{center}
+
+ 
+\end{titlepage}
+
+\title{\textbf{Remerciements}}
+\date{} 
+\maketitle
+
+\newpage
+
+% Table des matière
+\renewcommand{\contentsname}{Table des matières} 
+\tableofcontents
+\newpage
+
+\section{Présentation}
+\subsubsection{Sous partie}
+
+\section{Développement}
+
+Tu peux ecrire un truc la et tu cites \cite{cours} \cite{einstein1935} \cite{leem} \cite{R} \cite{R} \cite{survivalanalysis} \cite{tg}
+
+\section{Conclusion}
+
+\newpage
+
+
+\renewcommand{\refname}{Bibliographie}
+
+\addcontentsline{toc}{section}{Bibliographie}
+
+\printbibliography
+
+
+
+\newpage
+
+
+\section*{Annexe}
+\addcontentsline{toc}{section}{Annexe} 
+
+\begin{lstlisting}[language=R] %ici tu peux mettre du code R c'est pratique (je t'ai mis une fonction à moi en exemple)
+
+Recrutement_temps <- function(
+    t,                # Temps de recrutement
+    site,             # Nombre de sites actuellement ouverts
+    max_site,         # Nombre maximum de sites autorisés
+    tx_site,          # Taux de recrutement par site initial
+    variation_tx_site, # Variation du taux de recrutement par site
+    temps_fin_ouverture, # Temps à partir du moment où on n'ouvre plus de centre 
+    ouverture,       # Nbr de mois ou tout doit statistiquement ouvrir
+    boost = 1,        # Temps  à partir du moment où je boost la probabilité du tx_site
+    nbr_site_boost = 0  # Nombre boost de site
+) {
+  
+  # Calcul de la probabilité d'ouverture d'un centre
+  
+  # je fais en sorte que tout s'ouvre environ au bout de "ouverture" mois
+  
+  a<-(ouverture)*(ouverture+1)/2
+  
+  proba1 <- seq(ouverture/a, 1/a, length.out = ouverture)
+  
+  valeur<- 1/a
+  
+  indice<-0:90
+  
+  proba2<-valeur*(0.95^indice)
+  
+  Proba_ouverture_centre <- c(proba1,proba2)
+  
+  
+  # Nombre de sites pouvant ouvrir
+  Site_qui_peuvent_ouvrir <- max_site - site 
+  
+  # Initialisation des compteurs et des dataframes de recrutemen
+  z<-0
+  r <- 0
+  compteur <- 0
+  recru <- data.frame(Temps = c(0), Recrutement = c(0), Nombre_site = c(site))
+  recru2 <- data.frame(Temps = c(0), Recrutement = c(0), Nombre_site = c(site))
+  condition <- TRUE
+  
+  # Boucle principale de recrutement
+  for (i in 1:t) {
+    # Ouverture de centres jusqu'à temps_fin_ouverture
+    if (i <= temps_fin_ouverture ) {
+      a <- rbinom(Site_qui_peuvent_ouvrir, 1, Proba_ouverture_centre[compteur + 1])
+      a <- sum(a)
+      site <- site + a
+      Site_qui_peuvent_ouvrir <- Site_qui_peuvent_ouvrir - a
+    }
+    
+    # Activation du boost si nécessaire
+    if (i >= boost & condition == TRUE) {
+      condition <- FALSE
+    }
+    
+    # Calcul du taux de recrutement
+    taux <- tx_site + runif(1, -variation_tx_site, variation_tx_site)
+    
+    # Calcul du recrutement
+    r <- r + site * taux
+    
+    # Mise à jour des données de recrutement
+    compteur <- compteur + 1
+    recru <- rbind(recru, c(compteur, r, site))
+    
+    # Si le boost est activé, appliquer le boost 
+    
+    if (condition == FALSE) {
+      z<-z+1
+      recru2 <- rbind(recru2, c(compteur, r + z*(nbr_site_boost*taux), site))
+    } else {
+      recru2 <- rbind(recru2, c(compteur, r, site))
+    }
+  }
+  
+  # Création du graphique
+  graph <- ggplot(data = recru, aes(x = Temps, y = Recrutement)) + 
+    geom_line(data = recru, aes(x = Temps, y = Nombre_site)) +
+    geom_line(color = "red") +
+    geom_line(data = recru2, aes(x = Temps, y = Recrutement), color = "orange") 
+  
+  
+  # Conversion du graphique en interactive avec ggplotly
+  graph <- ggplotly(graph)
+  
+  return(list(plot=graph,recru=recru,recruboost=recru2))
+  
+  ############################################################# 
+  ###########Ecart de MVPA entre filles et garçons#############
+  #############################################################
+  #Test de Fisher Snedecor (Egalité de variance dans les deux groupes)
+  test_F = var.test(data_F$ecart_MVPA,data_M$ecart_MVPA)
+  print(test_F)
+  #Test de student
+  t_test = t.test(ecart_MVPA~gender,data = data,var.equal = TRUE)
+  print(t_test)
+  #Taille d'effet d de Cohen
+  taille_effet = cohen.d(data_M$ecart_MVPA,data_F$ecart_MVPA)
+  print(taille_effet)
+  ############################################################# 
+  ##Les écarts de MVPA entre filles et garçons selon les CA ###
+  #############################################################
+  
+}
+
+\end{lstlisting}
+
+\end{document}

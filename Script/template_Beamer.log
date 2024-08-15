@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.21)  13 JUN 2024 12:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.21)  29 JUL 2024 15:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -892,7 +892,8 @@ lish.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (template_Beamer.nav) [1
 
-{C:/Users/toshiba/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2
+{C:/Users/toshiba/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (template_
+Beamer.toc) [2
 
 ] [3
 
@@ -902,46 +903,46 @@ Dictionary: translator-theorem-dictionary, Language: English
 
 ] [6
 
+] [7
+
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 80.
 
 
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 80.
 
 
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 70.
+ut line 80.
 
 (C:\Program Files\MiKTeX\tex/latex/sansmathaccent\ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) [7
+) [8
 
 ]
-<res_2.PNG, id=225, 516.12825pt x 322.20375pt>
+<res_2.PNG, id=274, 522.753pt x 322.806pt>
 File: res_2.PNG Graphic file (type png)
 <use res_2.PNG>
-Package pdftex.def Info: res_2.PNG  used on input line 77.
-(pdftex.def)             Requested size: 342.2953pt x 213.68266pt.
+Package pdftex.def Info: res_2.PNG  used on input line 87.
+(pdftex.def)             Requested size: 342.2953pt x 211.36806pt.
 
-Overfull \vbox (40.15652pt too high) detected at line 77
- []
-
-[8
-
- <./res_2.PNG>]
-Overfull \vbox (39.82195pt too high) detected at line 103
+Overfull \vbox (37.84192pt too high) detected at line 87
  []
 
 [9
 
-] [10
+ <./res_2.PNG>]
+Overfull \vbox (39.82195pt too high) detected at line 113
+ []
+
+[10
 
 ] [11
 
@@ -949,19 +950,21 @@ Overfull \vbox (39.82195pt too high) detected at line 103
 
 ] [13
 
+] [14
+
 ]
-<res_3.PNG, id=393, 515.526pt x 322.20375pt>
+<res_3.PNG, id=442, 526.96875pt x 326.4195pt>
 File: res_3.PNG Graphic file (type png)
 <use res_3.PNG>
-Package pdftex.def Info: res_3.PNG  used on input line 175.
-(pdftex.def)             Requested size: 342.2953pt x 213.94322pt.
+Package pdftex.def Info: res_3.PNG  used on input line 185.
+(pdftex.def)             Requested size: 342.2953pt x 212.03566pt.
 
-Overfull \vbox (40.41708pt too high) detected at line 175
+Overfull \vbox (38.50952pt too high) detected at line 185
  []
 
-[14
+[15
 
- <./res_3.PNG>] [15
+ <./res_3.PNG>] [16
 
 ]
 \tf@nav=\write6
@@ -979,23 +982,23 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-04-11>
  ***********
 Package rerunfilecheck Info: File `template_Beamer.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 57FD8F4635DAB20F57DC115EAFA93B79;472.
  ) 
 Here is how much of TeX's memory you used:
- 21976 strings out of 474369
- 422830 string characters out of 5750323
+ 22039 strings out of 474369
+ 424207 string characters out of 5750323
  1942754 words of memory out of 5000000
- 43882 multiletter control sequences out of 15000+600000
+ 43937 multiletter control sequences out of 15000+600000
  565418 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,123p,449b,565s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,15n,123p,449b,617s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Progra
 m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on template_Beamer.pdf (15 pages, 197024 bytes).
+Output written on template_Beamer.pdf (16 pages, 210458 bytes).
 PDF statistics:
- 472 PDF objects out of 1000 (max. 8388607)
- 34 named destinations out of 1000 (max. 500000)
- 95 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 525 PDF objects out of 1000 (max. 8388607)
+ 40 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 

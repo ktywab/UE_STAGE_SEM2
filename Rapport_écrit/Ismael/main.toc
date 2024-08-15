@@ -1,0 +1,7 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Présentation}{3}{section.1}%
+\contentsline {subsubsection}{\numberline {1.0.1}Sous partie}{3}{subsubsection.1.0.1}%
+\contentsline {section}{\numberline {2}Développement}{3}{section.2}%
+\contentsline {section}{\numberline {3}Conclusion}{3}{section.3}%
+\contentsline {section}{Bibliographie}{4}{section.3}%
+\contentsline {section}{Annexe}{4}{section*.2}%

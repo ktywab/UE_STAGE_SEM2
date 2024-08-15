@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Modèle}{6}{0}{2}
+\beamer@sectionintoc {3}{Validation des hypothèses}{11}{0}{3}
+\beamer@sectionintoc {4}{Anova de type II}{16}{0}{4}
+\beamer@sectionintoc {5}{Résultats et discussion}{21}{0}{5}
+\beamer@sectionintoc {6}{Limites des résultats et Conclusion}{27}{0}{6}

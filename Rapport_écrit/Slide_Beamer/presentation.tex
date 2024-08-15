@@ -1,0 +1,388 @@
+\documentclass{beamer}
+\usepackage{amsmath}  % Pour les environnements mathématiques
+\usetheme{Madrid}
+\usepackage{array}  % Pour des options de tableau avancées
+\usepackage{booktabs}  % Pour des lignes de tableau plus jolies
+\usepackage{multirow}  % Pour les cellules fusionnées
+\usepackage{graphicx}  % Pour redimensionner les tableaux et insérer des images
+\usepackage{tcolorbox}
+\usepackage{fontawesome5}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% Définir une nouvelle couleur
+\definecolor{mycolor}{RGB}{0, 128, 0}  % Vert foncé par exemple
+\definecolor{mycolorlight}{RGB}{153, 204, 153} % Vert clair mélangé avec du blanc (50% de blanc)
+
+
+% Appliquer la nouvelle couleur aux éléments souhaités
+\setbeamercolor{structure}{fg=mycolor}  % Change la couleur des titres et des sections
+
+\title{Stage Laboratoire E3S}
+\subtitle{Examen des conditions qui augmentent ou diminuent les différences entre les sexes dans l'engagement dans l'activité physique pendant les cours d'éducation physique, dans le cadre écologique.}
+\author{Kossi ABOTSI}
+\date{\today}
+
+% Définir un bloc avec titre et fond personnalisé
+\newtcolorbox[auto counter, number within=section]{myblock}[2][]{%
+	colback=mycolor!10!white, % Couleur de fond du bloc
+	colframe=mycolorlight, % Couleur de bordure du bloc
+	colbacktitle=mycolor, % Couleur de fond du titre
+	coltitle=white, % Couleur du titre
+	sharp corners, % Coins du bloc
+	boxrule=0.8mm, % Épaisseur de la bordure
+	title={\textbf{Définition de la réduction}}, % Titre du bloc
+	#1 % Options supplémentaires
+}
+
+\AtBeginSection[]{
+	\begin{frame}
+		\frametitle{Table des matières}
+		\tableofcontents[currentsection, hideallsubsections]
+	\end{frame}
+}
+
+\AtBeginSubsection[]{
+	\begin{frame}
+		\frametitle{Table des matières}
+		\tableofcontents[currentsection, currentsubsection]
+	\end{frame}
+}
+
+\begin{document}
+	\begin{frame}[plain]
+		\maketitle
+	\end{frame}
+	
+	\begin{frame}{Table des matières}
+		\tableofcontents
+	\end{frame}
+	
+	\section{Introduction}
+	\begin{frame}{Introduction}
+		\begin{itemize}
+			\item Les filles obtiennent en moyenne des résultats inférieurs à ceux des garçons lors des évaluations en éducation physique et sportive (EPS).
+			\item L'engagement des filles dans l'activité physique à l'adolescence est un enjeu crucial pour leur santé et bien-être, associé aux questions d'équité entre les sexes.
+		\end{itemize}
+		
+		\textcolor{mycolor}{Objectif du stage :}\\
+		Analyser les différences d'engagement physique entre filles et garçons pendant une leçon d'EPS de 2 heures, en tenant compte de la nature de l'activité (CA), de la catégorie socioculturelle de l'établissement (IPS) et du milieu géographique.
+	\end{frame}
+	
+	\begin{frame}{Questions à répondre}
+		\begin{itemize}
+			\item Examen des écarts de niveau d'engagement en EPS entre filles et garçons selon les champs d'apprentissage (CA1, CA2, CA3, CA4).
+			\item Examen des écarts de niveau d'engagement en EPS entre filles et garçons selon la catégorie d’IPS du collège (élevé, moyen, faible).
+			\item Examen des écarts de niveau d'engagement en EPS entre filles et garçons selon le milieu géographique (urbain, rural).
+		\end{itemize}
+		\begin{tcolorbox}[colframe=mycolor, colback=white, boxrule=1pt]
+			\faExclamationTriangle \, Dans cette présentation, nous n'aborderons que l'examen des écarts de niveaux d'engagement en EPS entre filles et garçons selon les champs d'apprentissage.
+		\end{tcolorbox}
+	\end{frame}
+	
+	\section{Modèle}
+	\begin{frame}{Présentation des données}
+		\begin{itemize}
+			\item Les participants âgés de 11 à 15 ans ont rendu les autorisations parentales et ont accepté de participé à l'étude.
+			\item MVPA mesuré chez les filles et garçons au cours d'une lecçon d'EPS de 2 heures dans 4 champs d'apprentissage différents (1, 2, 3 et 4), dans les classes de 5ème à 3ème, dans différentes écoles en Alsace et Île-de-France.
+		\end{itemize}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.8\linewidth]{Extrai_donnée.PNG}
+			\caption{Extraits des données}
+			\label{fig:image1}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}{ANOVA à deux facteurs (1/2)}
+		\begin{tcolorbox}[colframe=mycolor, colback=white, boxrule=1pt]
+			\faExclamationTriangle \, Nous voulons étudier l'effet de deux facteurs sur la variable réponse. Le modèle statistique utilisée est donc une ANOVA à deux facteurs avec interaction.
+		\end{tcolorbox}
+		\begin{itemize}
+			\item \textbf{Les facteurs}
+			\begin{enumerate}
+				\item Champs d'apprentissage (CA) à 4 modalités (1, 2, 3 et 4)
+				\begin{itemize}
+					\item \textbf{CA1:} sports de performance (athlétisme, natation, cyclisme, ...)
+					\item \textbf{CA2:} sports de plein air et d'aventure (randonnée, alpinisme, surf, ...)
+					\item \textbf{CA3:} activité artistique (gymnastique rythmique, patinage artistique, ...)
+					\item \textbf{CA4:} sports d'opposition (sport de combat, tennis, ...)
+				\end{itemize}
+				\item Genre à deux modalités (F ou M)
+			\end{enumerate}
+			\item \textbf{Choix de la variable dépendante :}\\
+			Pour analyser les différence d'engagement nous nous basons sur l'écart de MVPA à la moyenne de MVPA de chaque classe.
+			\begin{enumerate}
+				\item Cela ajuste les différences de durée d'activité et d'enseignants entre les classes.
+			\end{enumerate}
+			
+		\end{itemize}
+		
+		
+	\end{frame}
+	
+
+	\begin{frame}{ANOVA à deux facteurs (2/2)}		
+		Modèle d'ANOVA à deux facteurs (genre et champ d'apprentissage) avec comme variable dépendante l'écart de MVPA par rapport à la moyenne de MVPA de chaque classe.
+		
+		Le modèle s'écrit :
+		\begin{equation}
+			Y_{ijk} = \mu + \alpha_i + \beta_j + \gamma_{ij} + \epsilon_{ijk}, \quad i \in \{1,2\}; j\in \{1,2,3,4\},\quad \epsilon_{ijk} \overset{\text{i.i.d}}{\sim} \mathcal{N}(0, \sigma^2) 
+		\end{equation}
+		où
+		\begin{itemize}
+			\item $\mu$ est l'effet moyen général,
+			\item $\alpha_i$ représente l'effet principal du genre,
+			\item $\beta_j$ représente l'effet principal du champ d'apprentissage,
+			\item $\gamma_{ij}$ est le terme d'interaction,
+			\item $\epsilon_{ijk}$ sont les résidus.
+			\item $k$ l'indice de répétition pour le couple $(i,j)$
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Identifiabilité du modèle}
+		\begin{itemize}
+			\item Le modèle n'est pas identifiable car pour tout $(1+I+J+IJ)$-uplet $(\mu, \alpha_1, \ldots, \alpha_I, \beta_1, \ldots, \beta_J, \gamma_{11}, \ldots, \gamma_{ij}, \ldots, \gamma_{IJ})^\top$ et pour tout $a \in \mathbb{R}$, le $(1+I+J+IJ)$-uplet $(\mu-a, \alpha_1+\frac{a}{3}, \ldots, \alpha_I+\frac{a}{3}, \beta_1+\frac{a}{3}, \ldots, \beta_J+\frac{a}{3}, \gamma_{11}+\frac{a}{3}, \ldots, \gamma_{ij}+\frac{a}{3}, \ldots, \gamma_{IJ}+\frac{a}{3})^\top$ correspond au même modèle.
+			\item On utilise la contrainte de somme :
+			\begin{equation*}
+				\sum_{i} \alpha_i = 0; \quad \sum_{j} \beta_j = 0; \quad \forall i, \quad \sum_{j} \gamma_{ij} = 0; \quad \forall j, \quad \sum_{i} \gamma_{ij} = 0
+			\end{equation*}
+		\end{itemize}
+	\end{frame}
+	
+	\section{Validation des hypothèses}
+	
+	\begin{frame}{Hypothèses à vérifier par le modèle}
+		\begin{itemize}
+			\item \textcolor{red}{Indépendance des observations (ou des résidus).}
+			\item \textcolor{red}{Égalité des variances des résidus du modèle (homoscédasticité).}
+			\item \textcolor{red}{Normalité des résidus du modèle.}
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Indépendance des observations}
+		L'hypothèse d'indépendance des observations est vérifiée. La liaison potentielle due à l'appartenance à une même classe ou école est éliminée en utilisant l'écart à la moyenne du MVPA pour chaque classe.
+	\end{frame}
+	
+	\begin{frame}{Égalité des variances des résidus du modèle (homoscédasticité)}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.8\linewidth]{variance_2.PNG}
+			\caption{Graphique de diagnostic de l'homoscédasticité}
+			\label{fig:variance2}
+		\end{figure}
+		
+		Petit commentaire...
+	\end{frame}
+	
+	\begin{frame}{Normalité des résidus du modèle}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.8\linewidth]{Normalité_2.PNG}
+			\caption{Q-Q plot}
+			\label{fig:QQplot_2}
+		\end{figure}
+		Petit commentaire...
+	\end{frame}
+	
+	\section{Anova de type II}
+	\begin{frame}{Type d'ANOVA (1/4)}
+		\begin{itemize}
+			\item Il est courant de tester la nullité des paramètres pour chaque niveau d'un facteur pour évaluer son effet.
+			\item Tester uniquement la nullité des paramètres n'est pas suffisant pour définir correctement l'hypothèse nulle ; il faut aussi considérer les hypothèses sur les autres facteurs et interactions.
+			\item Dans un plan équilibré, le test de significativité d'un facteur reste le même, indépendamment des hypothèses sur les autres variables.
+			\item Dans un plan déséquilibré, le test de significativité d'un facteur peut varier en fonction des hypothèses sur les autres facteurs et interactions.
+			\item Pour spécifier correctement le rôle des autres facteurs et interactions dans un plan déséquilibré, on utilise la notion de réduction.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Type d'ANOVA (2/4)}
+		
+		\begin{myblock}
+			  S Soit un modèle contenant les effets $(a_1,\ldots,a_l)$ des facteurs $(X_1, X_2, \ldots, X_l)$. On appelle réduction associée à l'introduction de $a_{q_1}, \ldots, a_{q_d}$ dans un modèle contenant les effets $a_{i_1}, \ldots, a_{i_m}$, notée $R(a_{q_1}, \ldots, a_{q_d}|\mu,a_{i_1}, \ldots, a_{i_m})$ la norme suivante :
+			
+			\begin{equation}
+				R(a_{q_1}, \ldots, a_{q_d}|\mu,a_{i_1}, \ldots, a_{i_m}) = SCE_{i_1,i_2,\ldots,i_m,q_1,q_2,\ldots,q_d} - SCE_{i_1,i_2,\ldots,i_m},
+			\end{equation}
+			
+			avec $SCE_{i_1,i_2}$ la somme des carrés expliquée par le modèle associée aux facteurs $X_{i_1}$, $X_{i_2}$.
+		\end{myblock}
+		\textcolor{red}{Un test de l'effet d'un facteur est associé à une réduction donnée.}
+	\end{frame}
+	
+	\begin{frame}{Type d'ANOVA (3/4)}
+		\textbf{Les hypothèses associés à la réduction $R(\gamma|\mu,\alpha,\beta)$ du modèle $M_1$}
+		\begin{itemize}
+			\item $H_0$ : Il n'y a pas de différence significative entre le modèle ne contenant pas l'effet du facteur d'interaction entre genre et CA et le modèle complet.
+			\item $H_1$ : Il y a une différence significative entre le modèle ne contenant pas l'effet du facteur d'interaction entre genre et CA et le modèle complet.
+		\end{itemize}
+		\textbf{ANOVA de type II}
+		\begin{itemize}
+			\item La réduction de type II dans une ANOVA à deux facteurs évalue l'effet d'un facteur ou d'une interaction en tenant compte des autres facteurs principaux, sans dépendre de l'ordre d'introduction.
+			\item Ce type de réduction considère que l'effet d'un facteur principal ne peut pas être supprimé si une interaction est présente dans le modèle.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Type d'ANOVA (4/4)}
+		\begin{table}[H]
+			\centering
+			\caption{Table d'analyse de la variance des réductions de type II du modèle $M_1$.}
+			\resizebox{\textwidth}{!}{ % Redimensionne le tableau pour qu'il tienne dans la largeur du texte
+				\begin{tabular}{|c|c|c|c|c|p{4cm}|}
+					\hline
+					\textbf{Effet} & \textbf{Réduction type II} & \textbf{DDL} & \textbf{F} & \textbf{Loi de $F$ sous $H_0$} & \textbf{Question} \\
+					\hline
+					$\alpha$ & $R(\alpha|\beta, \mu)$ & $I-1$ & \LARGE{$\frac{\frac{R(\alpha|\beta, \mu)}{I-1}}{\frac{\text{SCR}}{n - IJ}}$} & \LARGE{$\mathcal{F}_{I-1, n-IJ}$} & Est-il pertinent d'ajouter l'effet du facteur genre à un modèle contenant la constante et l'effet du facteur CA ? \\
+					\hline
+					$\beta$ & $R(\beta|\mu, \alpha)$ & $J-1$ & \LARGE{$\frac{\frac{R(\beta|\mu, \alpha)}{J-1}}{\frac{\text{SCR}}{n - IJ}}$} & \LARGE{$\mathcal{F}_{J-1, n-IJ}$} & Est-il pertinent d'ajouter l'effet du facteur CA à un modèle contenant la constante et l'effet du facteur genre ? \\
+					\hline
+					$\gamma$ & $R(\gamma|\mu, \alpha, \beta)$ & $(I-1) \times (J-1)$ & \LARGE{$\frac{\frac{R(\gamma|\mu, \alpha, \beta)}{(I-1) \times (J-1)}}{\frac{\text{SCR}}{n - IJ}}$} & \LARGE{$\mathcal{F}_{(I-1) \times (J-1), n-IJ}$} & Est-il pertinent d'ajouter l'effet de l'interaction entre les deux facteurs à un modèle contenant la constante et les effets des deux facteurs ? \\
+					\hline
+				\end{tabular}
+			}
+			\label{ref:analyse_var_2}
+		\end{table}
+	\end{frame}
+	
+	
+	
+	\section{Résultats et discussion}
+	
+	\begin{frame}{Tableau de contingence}
+		\begin{table}[H]
+			\centering
+			\caption{Effectifs des CA par genre}
+			\begin{tabular}{ccccc}
+				\toprule
+				& CA 1 & CA 2 & CA 3 & CA 4 \\ 
+				\midrule
+				F & 20 & 53 & 49 & 98 \\ 
+				M & 26 & 51 & 54 & 111 \\ 
+				\bottomrule
+			\end{tabular}
+			\label{tab:ca_gender}
+		\end{table}
+		
+		\begin{itemize}
+			\item Plan non équilibré
+			\item ANOVA de type II
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Test de validité du modèle complet}
+		On teste :
+		\begin{itemize}
+			\item \textbf{$H_0$} : $\alpha_i = 0$ et $\beta_j = 0$ et $\gamma_{ij} = 0 \quad \forall i, j$
+			\item \textbf{$H_1$} : $\alpha_i \neq 0$ ou $\beta_j \neq 0$ ou $\gamma_{ij} \neq 0 \quad \forall  i, j$
+		\end{itemize}
+		
+		\begin{table}[H]
+			\centering
+			\caption{Tableau d'analyse de variance pour le modèle $M_1$}
+			\begin{tabular}{ccccccc}
+				\toprule
+				\textbf{Res.Df} & \textbf{RSS} & & \textbf{Df} & \textbf{Sum of Sq} & \textbf{F value} & \textbf{Pr($>F$)} \\ 
+				\midrule
+				461 & 36916 & & & & & \\ 
+				454 & 31593 & & 7 & 5323.2 & 10.928 & 8.944 $\times 10^{-13}$ \\ 
+				\bottomrule
+			\end{tabular}
+			\label{tab:anova_results1}
+		\end{table}
+	\end{frame}
+	
+	\begin{frame}{Test de validité de sous modèle}
+		\begin{table}[H]
+			\centering
+			\caption{Effets des différents facteurs (type II) dans le modèle M1}
+			\begin{tabular}{lcccc}
+				\toprule
+				Source & Sum Sq & Df & F value & Pr($>F$) \\ 
+				\midrule
+				genre & 3585.2 & 1 & 51.5200 & 2.911 $\times 10^{-12}$ \\ 
+				CA & 6.4 & 3 & 0.0307 & 0.9927 \\ 
+				genre:CA & 1738.0 & 3 & 8.3252 & 2.122 $\times 10^{-5}$ \\ 
+				Résidus & 31592.8 & 454 & & \\ 
+				\bottomrule
+			\end{tabular}
+			\label{tab:anova_results2}
+		\end{table}
+		
+		\textbf{Effet de l'interaction entre genre et CA} :
+		\begin{itemize}
+			\item \textbf{$H_0$} : $Y_{ijk} = \mu + \alpha_i + \beta_j + \epsilon_{ijk} \quad \forall i,j,k$ 
+			\item \textbf{$H_1$} : $Y_{ijk} = \mu + \alpha_i + \beta_j + \gamma_{ij} + \epsilon_{ijk} \quad \forall i,j,k$
+		\end{itemize}
+		\textcolor{red}{Nous n'accorderons donc plus trop d'importance aux tests sur les facteurs principaux, car les deux facteurs principaux exercent leur influence par le biais de leur interaction}
+	\end{frame}
+	
+	\begin{frame}{Test de comparaison de la moyenne des écarts à la moyenne de MVPA de chaque classe des filles et garçons selon le CA (Test post hoc)}
+		Nous voulons tester les hypothèses :
+		\begin{itemize}
+			\item $H_0 : \theta_{i_1j} = \theta_{i_2j}$
+			\item $H_1 : \theta_{i_1j} \neq \theta_{i_2j}$
+		\end{itemize}
+		où $\theta_{i_1j_1}$ et $\theta_{i_2j_2}$ sont les moyennes dans chaque groupe différent et $i_1, i_2 \in \{1, 2\}$ avec $i_1 \neq i_2$ ; $j \in \{1, \ldots, 4\}$. \\
+		
+		\begin{table}[H]
+			\centering
+			\caption{Test post hoc (Tukey-Cramer)}
+			\resizebox{\textwidth}{!}{
+				\begin{tabular}{|p{5cm}|c|c|c|c|}
+					\hline
+					& CA1 & CA2 & CA3 & CA4 \\ 
+					\hline
+					Écart moyen entre filles et garçons des écarts à la moyenne de MVPA de chaque classe & -4.4548 & -1.4898 & -1.7470 & -9.7647 \\ 
+					\hline
+					Intervalle de confiance & -12.010 à 3.100 & -6.4730 à 3.493 & -6.759 à 3.265 & -13.286 à -6.244 \\ 
+					\hline
+					P-valeur & 0.6235 & 0.9850 & 0.9600 & 0.0000 \\ 
+					\hline
+				\end{tabular}
+			}
+			\label{tab:ecarts_mvpa_1}
+		\end{table}
+		
+	\end{frame}
+	
+	\begin{frame}{Taille d'effet ($\omega^2$)}
+		\begin{table}[H]
+			\centering
+			\caption{Tailles d'effet ($\omega^2$) et intervalles de confiance à 95\% (unilatéraux)}
+			\begin{tabular}{ccc}
+				\toprule
+				Paramètre & $\omega^2$ & 95\% CI \\
+				\midrule
+				Genre & 0.10 & [0.06, 1.00] \\
+				CA & 0.00 & [0.00, 1.00] \\
+				Genre:CA & 0.05 & [0.02, 1.00] \\
+				\bottomrule
+			\end{tabular}
+			\label{table:effect_size_2}
+		\end{table}
+		\begin{itemize}
+			\item L'interaction entre le genre et le CA explique 5 \% de la variance totale, ce qui représente une taille d'effet modérée 
+			\item En EPS cette taille d'effet indique que les différences entre les filles et les garçons dans le champs 4 doivent être prise en compte.
+		\end{itemize}
+	\end{frame}
+	\section{Limites des résultats et Conclusion}
+	\begin{frame}{Limites des résultats}
+		\begin{itemize}
+			\item Le recrutement des participants parmi ceux ayant donné leur autorisation et exprimé un intérêt pourrait introduire un biais si les élèves plus motivés ou mieux équipés sont surreprésentés.
+			\item Les plans non équilibrés compliquent le calcul et l'interprétation des tailles d'effet, car une partie de la variabilité est perdue, rendant les tailles d'effet moins précises mais toujours indicatives de l'importance des facteurs.
+			\item Les résultats de l'étude sont basés sur des données recueillies en Alsace et en Île-de-France la généralisation de ces résultats à d'autres régions de France doit être effectuée avec prudence.
+			\item L'examen du niveau d'engagement physique en EPS basé sur l'écart de MVPA par rapport à la moyenne de MVPA de chaque classe ne permet pas de prendre en compte les effets aléatoires liés aux collèges et aux classes
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Conclusion et perspective}
+		\begin{itemize}
+			\item Les garçons sont généralement plus impliqués que les filles.
+			\item Une différence significative est observée uniquement dans le champ 4 (activités d'opposition).
+			\item Les autres champs (sports de performance, sports de plein air, activités artistiques) ne montrent pas de différences significatives entre les sexes.
+			\item Analyse du niveau d'engagement en EPS basé sur le MVPA des participants avec prise en compte des effets aléatoires des collèges et des classes appartenant à ces collèges via un modèle mixte.
+			
+		\end{itemize}
+	\end{frame}
+\end{document}
