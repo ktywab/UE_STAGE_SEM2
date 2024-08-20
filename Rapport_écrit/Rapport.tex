@@ -628,7 +628,7 @@ La statistique de test observée est $F = \frac{S_{Y_F}^2}{S_{Y_G}^2} = 1.005$. 
 	
 	\textbf{\textit{Toutes les conditions d'application du test de Student étant respectées, nous pouvons donc réaliser ce test.}} \\
 	
-	Nous observons une statistique de test $T = \frac{\overline{Y_F} - \overline{Y_G}}{\sqrt{\frac{S_{Y_F}^2}{n_F} + \frac{S_{Y_G}^2}{n_G}}} = -7.0272$. Sous $H_0$, T suit une loi de Student avec $n_F + n_G - 2 = 460$ degrés de liberté. La p-valeur obtenue est $7.642 \times 10^{-12}$, qui est inférieure au seuil de 5\%. Nous ne pouvons donc pas accepter $H_0$. Ainsi, la moyenne de \texttt{ecart\_MVPA} des garçons est significativement supérieure à celle des filles (T < 0). Donc les garçons s'engagent plus que les filles en EPS\\
+	Nous observons une statistique de test $T = \frac{\overline{Y}_F - \overline{Y}_G}{\sqrt{\frac{S_{Y_F}^2}{n_F} + \frac{S_{Y_G}^2}{n_G}}} = -7.0272$. Sous $H_0$, T suit une loi de Student avec $n_F + n_G - 2 = 460$ degrés de liberté. La p-valeur obtenue est $7.642 \times 10^{-12}$, qui est inférieure au seuil de 5\%. Nous ne pouvons donc pas accepter $H_0$. Ainsi, la moyenne de \texttt{ecart\_MVPA} des garçons est significativement supérieure à celle des filles (T < 0). Donc les garçons s'engagent plus que les filles en EPS\\
 
 	
 	\noindent
@@ -798,7 +798,8 @@ Les points sur la figure \ref{fig:QQplot_2} sont globalement alignés sur la lig
 	
 	Pour le test de l'effet de l'interaction, la statistique de test est $F_{genre \times CA} = 8.3252$, qui, sous $H_0$, suit une loi de Fisher avec 3 et 454 degrés de liberté. La probabilité critique associée au test est de $2.122 \times 10^{-5}$. L'effet de l'interaction entre genre et CA est significatif au niveau de 5\%. Nous n'accorderons donc plus trop d'importance aux tests sur les facteurs principaux, car les deux facteurs principaux exercent leur influence par le biais de leur interaction.\\
 	
-	\textbf{\textit{\underline{Test de comparaison  de la moyenne de \texttt{ecart\_MVPA} des filles et garçons selon le champ d'apprentissage}}} \\
+	\noindent
+	\textbf{\textit{\underline{Test de comparaison  de comparaison multiple}}} \\
 	
 	Nous avons détecté un effet significatif de l'interaction et nous nous intéressons donc à la différence de moyenne de \texttt{ecart\_MVPA} entre les filles et les garçons selon les différents CA. Nous voulons tester les hypothèses suivantes :	
 	\begin{itemize}[label=--, leftmargin=*]
@@ -1181,7 +1182,7 @@ Avant d'examiner les résultats des tests associés au modèle M3, il est essent
 	La statistique de test pour l'effet d'interaction $F_{gender*Geographie} = 12.6145$, qui sous $H_0$ suit une loi de Fisher à 1 et 458 ddl. La p-valeur associée est 0.0004224. Cette p-valeur étant inférieure à 0.05, nous rejetons $H_0$. L'effet de l'interaction entre genre et milieu géographique est significatif. Les deux facteurs influencent le MVPA principalement à travers leur interaction, il n'est donc pas nécessaire de tester leur effet principal séparément.\\
 	
 	\noindent
-	\textbf{\textit{\underline{Test de comparaison  de la moyenne de \texttt{ecart\_MVPA} des filles et garçons selon le milieu géographique}}} \\
+	\textbf{\textit{\underline{Test de comparaison  de comparaison multiple}}} \\
 	
 	Un effet significatif de l'interaction est détecté et ici nous sommes intéressés par la différence de moyenne de \texttt{ecart\_MVPA} entre les filles et garçons selon les différents milieux géographiques. Nous voulons tester les hypothèses : 
 	\begin{itemize}[label=--, leftmargin=*]

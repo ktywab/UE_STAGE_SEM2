@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.2)  12 AUG 2024 15:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.2)  16 AUG 2024 08:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1751,72 +1751,65 @@ Underfull \hbox (badness 10000) in paragraph at lines 799--800
 
  []
 
-LaTeX Font Info:    Font shape `T1/pcr/b/it' in size <12> not available
-(Font)              Font shape `T1/pcr/b/sl' tried instead on input line 801.
 
-Overfull \hbox (98.054pt too wide) in paragraph at lines 801--802
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 801--802
+Underfull \hbox (badness 10000) in paragraph at lines 801--803
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 808--809
+Underfull \hbox (badness 10000) in paragraph at lines 809--810
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 818--818
+Underfull \hbox (badness 10000) in paragraph at lines 819--819
 []|\T1/ptm/m/n/12 Écart moyen entre filles
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 818--818
+Underfull \hbox (badness 1748) in paragraph at lines 819--819
 \T1/ptm/m/n/12 et gar-çons des écarts à la
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 818--818
+Underfull \hbox (badness 10000) in paragraph at lines 819--819
 \T1/ptm/m/n/12 moyenne de MVPA de
  []
 
 
-Overfull \hbox (50.9874pt too wide) in paragraph at lines 814--826
+Overfull \hbox (50.9874pt too wide) in paragraph at lines 815--827
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 810--826
+Underfull \hbox (badness 10000) in paragraph at lines 811--827
 
  []
 
 
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 829--830
+Underfull \hbox (badness 10000) in paragraph at lines 830--831
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--832
+Underfull \hbox (badness 10000) in paragraph at lines 832--833
 
  []
 
-<Diagramme_1.PNG, id=386, 497.4585pt x 317.988pt>
+<Diagramme_1.PNG, id=385, 497.4585pt x 317.988pt>
 File: Diagramme_1.PNG Graphic file (type png)
 <use Diagramme_1.PNG>
-Package pdftex.def Info: Diagramme_1.PNG  used on input line 835.
+Package pdftex.def Info: Diagramme_1.PNG  used on input line 836.
 (pdftex.def)             Requested size: 452.9679pt x 289.55875pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 841--842
+Underfull \hbox (badness 10000) in paragraph at lines 842--843
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 843--845
+Underfull \hbox (badness 10000) in paragraph at lines 844--846
 
  []
 
@@ -1827,130 +1820,130 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.867 \begin{equation}
+l.868 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.867 \begin{equation}
+l.868 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.867 \begin{equation}
+l.868 \begin{equation}
                       
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.867 \begin{equation}
+l.868 \begin{equation}
                       
-Underfull \hbox (badness 10000) in paragraph at lines 876--877
+Underfull \hbox (badness 10000) in paragraph at lines 877--878
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 892--893
+Underfull \hbox (badness 10000) in paragraph at lines 893--894
 
  []
 
 
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 912--913
+Underfull \hbox (badness 10000) in paragraph at lines 913--914
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 915--916
+Underfull \hbox (badness 10000) in paragraph at lines 916--917
 
  []
 
-<Interaction_2.PNG, id=408, 531.1845pt x 277.63725pt>
+<Interaction_2.PNG, id=407, 531.1845pt x 277.63725pt>
 File: Interaction_2.PNG Graphic file (type png)
 <use Interaction_2.PNG>
-Package pdftex.def Info: Interaction_2.PNG  used on input line 920.
+Package pdftex.def Info: Interaction_2.PNG  used on input line 921.
 (pdftex.def)             Requested size: 452.9679pt x 236.7638pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 917--925
+Underfull \hbox (badness 10000) in paragraph at lines 918--926
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 926--927
+Underfull \hbox (badness 10000) in paragraph at lines 927--928
 
  []
 
 
 
 [25 <./Interaction_2.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 929--930
+Underfull \hbox (badness 10000) in paragraph at lines 930--931
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 931--933
+Underfull \hbox (badness 10000) in paragraph at lines 932--934
 
  []
 
-<variance_3.PNG, id=418, 477.58424pt x 305.34074pt>
+<variance_3.PNG, id=417, 477.58424pt x 305.34074pt>
 File: variance_3.PNG Graphic file (type png)
 <use variance_3.PNG>
-Package pdftex.def Info: variance_3.PNG  used on input line 938.
+Package pdftex.def Info: variance_3.PNG  used on input line 939.
 (pdftex.def)             Requested size: 452.9679pt x 289.61081pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 942--943
+Underfull \hbox (badness 10000) in paragraph at lines 943--944
 
  []
 
-<NormalitÃ©_3.PNG, id=422, 475.17525pt x 305.943pt>
+<NormalitÃ©_3.PNG, id=421, 475.17525pt x 305.943pt>
 File: NormalitÃ©_3.PNG Graphic file (type png)
 <use NormalitÃ©_3.PNG>
-Package pdftex.def Info: NormalitÃ©_3.PNG  used on input line 949.
+Package pdftex.def Info: NormalitÃ©_3.PNG  used on input line 950.
 (pdftex.def)             Requested size: 452.9679pt x 291.65253pt.
 
 
 [26 <./variance_3.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 956--957
+Underfull \hbox (badness 10000) in paragraph at lines 957--958
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 958--959
+Underfull \hbox (badness 10000) in paragraph at lines 959--960
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 960--962
+Underfull \hbox (badness 10000) in paragraph at lines 961--963
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 985--986
+Underfull \hbox (badness 10000) in paragraph at lines 986--987
 
  []
 
 
 
 [27 <./NormalitÃ©_3.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 987--989
+Underfull \hbox (badness 10000) in paragraph at lines 988--990
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1016--1017
+Underfull \hbox (badness 10000) in paragraph at lines 1017--1018
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1026--1027
+Underfull \hbox (badness 10000) in paragraph at lines 1027--1028
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1028--1029
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1030
 
  []
 
@@ -1959,167 +1952,162 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1035 \begin{equation}
+l.1036 \begin{equation}
                        
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1035 \begin{equation}
+l.1036 \begin{equation}
                        
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1035 \begin{equation}
+l.1036 \begin{equation}
                        
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.10
 }) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1035 \begin{equation}
+l.1036 \begin{equation}
                        
-Underfull \hbox (badness 10000) in paragraph at lines 1037--1040
+Underfull \hbox (badness 10000) in paragraph at lines 1038--1041
 
  []
 
 
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 1042--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1043--1044
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1061--1063
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1064
 
  []
 
 
-Overfull \hbox (5.7173pt too wide) in paragraph at lines 1070--1081
+Overfull \hbox (5.7173pt too wide) in paragraph at lines 1071--1082
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1083--1085
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1086
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1087--1088
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1089
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1090
+Underfull \hbox (badness 10000) in paragraph at lines 1090--1091
 
  []
 
-<Interaction_3.PNG, id=451, 566.71725pt x 270.41025pt>
+<Interaction_3.PNG, id=450, 566.71725pt x 270.41025pt>
 File: Interaction_3.PNG Graphic file (type png)
 <use Interaction_3.PNG>
-Package pdftex.def Info: Interaction_3.PNG  used on input line 1093.
+Package pdftex.def Info: Interaction_3.PNG  used on input line 1094.
 (pdftex.def)             Requested size: 452.9679pt x 216.1428pt.
 
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1102--1103
+Underfull \hbox (badness 10000) in paragraph at lines 1103--1104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1106
+Underfull \hbox (badness 10000) in paragraph at lines 1105--1107
 
  []
 
-<variance_4.PNG, id=462, 461.3235pt x 256.5585pt>
+<variance_4.PNG, id=461, 461.3235pt x 256.5585pt>
 File: variance_4.PNG Graphic file (type png)
 <use variance_4.PNG>
-Package pdftex.def Info: variance_4.PNG  used on input line 1111.
+Package pdftex.def Info: variance_4.PNG  used on input line 1112.
 (pdftex.def)             Requested size: 452.9679pt x 251.91496pt.
 
 
 [30 <./Interaction_3.PNG>]
-<NormalitÃ©_4.PNG, id=474, 437.83575pt x 238.491pt>
+<NormalitÃ©_4.PNG, id=473, 437.83575pt x 238.491pt>
 File: NormalitÃ©_4.PNG Graphic file (type png)
 <use NormalitÃ©_4.PNG>
-Package pdftex.def Info: NormalitÃ©_4.PNG  used on input line 1120.
+Package pdftex.def Info: NormalitÃ©_4.PNG  used on input line 1121.
 (pdftex.def)             Requested size: 452.9679pt x 246.74382pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1126--1127
+Underfull \hbox (badness 10000) in paragraph at lines 1127--1128
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1128--1129
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1130
 
  []
 
 
 
 [31 <./variance_4.PNG> <./NormalitÃ©_4.PNG>]
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1132
+Underfull \hbox (badness 10000) in paragraph at lines 1131--1133
 
  []
 
 
-Overfull \hbox (0.92603pt too wide) in paragraph at lines 1133--1134
+Overfull \hbox (0.92603pt too wide) in paragraph at lines 1134--1135
 []\T1/ptm/m/n/12 Le test du mo-dèle com-plet consiste à com-pa-rer le mo-dèle l
 e plus simple (mo-dèle constant)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1152--1153
+Underfull \hbox (badness 10000) in paragraph at lines 1153--1154
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1154--1156
+Underfull \hbox (badness 10000) in paragraph at lines 1155--1157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1183
 
  []
 
 
-Overfull \hbox (86.18594pt too wide) in paragraph at lines 1183--1185
-$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1183--1185
+Underfull \hbox (badness 10000) in paragraph at lines 1184--1186
 
  []
 
 
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1212
+Underfull \hbox (badness 10000) in paragraph at lines 1212--1213
 
  []
 
-<Diagramme_2.PNG, id=495, 487.8225pt x 316.18124pt>
+<Diagramme_2.PNG, id=494, 487.8225pt x 316.18124pt>
 File: Diagramme_2.PNG Graphic file (type png)
 <use Diagramme_2.PNG>
-Package pdftex.def Info: Diagramme_2.PNG  used on input line 1217.
+Package pdftex.def Info: Diagramme_2.PNG  used on input line 1218.
 (pdftex.def)             Requested size: 452.9679pt x 293.59201pt.
 
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1222--1224
+Underfull \hbox (badness 10000) in paragraph at lines 1223--1225
 
  []
 
 
-Overfull \hbox (31.31267pt too wide) in paragraph at lines 1225--1240
+Overfull \hbox (31.31267pt too wide) in paragraph at lines 1226--1241
 []\T1/ptm/m/n/12 En mi-lieu ur-bain, nous avons ob-servé une dif-fé-rence si-gn
 i-fi-ca-tive de moyenne de \T1/pcr/m/n/12 ecart_MVPA
  []
 
 
-Overfull \hbox (6.52866pt too wide) in paragraph at lines 1248--1249
+Overfull \hbox (6.52866pt too wide) in paragraph at lines 1249--1250
 []\T1/ptm/m/n/12 Il est im-por-tant de no-ter que les don-nées dés-équi-li-brée
 s entre dif-fé-rents groupes (par exemple,
  []
@@ -2131,7 +2119,7 @@ s entre dif-fé-rents groupes (par exemple,
 [35]
 
 [36]
-Overfull \hbox (0.63191pt too wide) in paragraph at lines 1280--1282
+Overfull \hbox (0.63191pt too wide) in paragraph at lines 1281--1283
 \T1/pcr/m/n/12 / / github . com / ktywab / UE _ STAGE _ SEM2 / blob / main / Sc
 ript / Mod % C3 % A8le .
  []
@@ -2141,19 +2129,19 @@ ript / Mod % C3 % A8le .
 [37]
 
 [38]
-Overfull \hbox (27.00388pt too wide) in paragraph at lines 1369--1369
+Overfull \hbox (27.00388pt too wide) in paragraph at lines 1370--1370
 [][]\T1/ptm/m/sc/12 Observatoire National de l'Activité Physique et de la Séden
 tarité (ONAPS)[]\T1/ptm/m/n/12 .
  []
 
 
-Overfull \hbox (4.62953pt too wide) in paragraph at lines 1369--1369
+Overfull \hbox (4.62953pt too wide) in paragraph at lines 1370--1370
 \T1/pcr/m/n/12 campagne -[] nationale -[] on -[] peut -[] etre -[] actif -[] et
  -[] sedentaire/$[][]\T1/ptm/m/n/12 . Consulté
  []
 
 
-Overfull \hbox (11.55077pt too wide) in paragraph at lines 1369--1369
+Overfull \hbox (11.55077pt too wide) in paragraph at lines 1370--1370
 \T1/ptm/m/n/12 EDP Sciences, 2021. \T1/ptm/m/sc/12 url \T1/ptm/m/n/12 : [][]$\T
 1/pcr/m/n/12 https : / / jmeunierp8 . github . io / ManuelJamovi /
  []
@@ -2176,11 +2164,11 @@ Package logreq Info: Writing requests to 'Rapport.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37919 strings out of 473903
- 691841 string characters out of 5736389
+ 37915 strings out of 473903
+ 691799 string characters out of 5736389
  2188908 words of memory out of 5000000
- 59989 multiletter control sequences out of 15000+600000
- 615947 words of font info for 114 fonts, out of 8000000 for 9000
+ 59987 multiletter control sequences out of 15000+600000
+ 615201 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  79i,15n,117p,1560b,2860s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progra
@@ -2193,14 +2181,13 @@ Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public
 /amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/sym
-bols/msbm10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrbo8a.pfb><C
-:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiK
-TeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/t
-imes/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/
-Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Rapport.pdf (40 pages, 789750 bytes).
+bols/msbm10.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:
+/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX
+/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/tim
+es/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rapport.pdf (40 pages, 781326 bytes).
 PDF statistics:
- 761 PDF objects out of 1000 (max. 8388607)
+ 756 PDF objects out of 1000 (max. 8388607)
  217 named destinations out of 1000 (max. 500000)
  288 words of extra memory for PDF output out of 10000 (max. 10000000)
 

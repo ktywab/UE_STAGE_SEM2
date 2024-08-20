@@ -43,14 +43,14 @@
 \headcommand {\slideentry {2}{3}{4}{22/22}{Validation des hypothèses}{0}}
 \headcommand {\beamer@framepages {22}{22}}
 \headcommand {\beamer@subsectionpages {19}{22}}
-\headcommand {\beamer@subsectionentry {0}{2}{4}{23}{Type d'ANOVA}}
-\headcommand {\slideentry {2}{4}{1}{23/26}{Type d'ANOVA}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{23}{Types d'ANOVA}}
+\headcommand {\slideentry {2}{4}{1}{23/26}{Types d'ANOVA}{0}}
 \headcommand {\beamer@framepages {23}{26}}
-\headcommand {\slideentry {2}{4}{2}{27/27}{Type d'ANOVA}{0}}
+\headcommand {\slideentry {2}{4}{2}{27/27}{Types d'ANOVA}{0}}
 \headcommand {\beamer@framepages {27}{27}}
-\headcommand {\slideentry {2}{4}{3}{28/29}{Type d'ANOVA}{0}}
+\headcommand {\slideentry {2}{4}{3}{28/29}{Types d'ANOVA}{0}}
 \headcommand {\beamer@framepages {28}{29}}
-\headcommand {\slideentry {2}{4}{4}{30/30}{Type d'ANOVA}{0}}
+\headcommand {\slideentry {2}{4}{4}{30/30}{Types d'ANOVA}{0}}
 \headcommand {\beamer@framepages {30}{30}}
 \headcommand {\beamer@sectionpages {9}{30}}
 \headcommand {\beamer@subsectionpages {23}{30}}
@@ -71,27 +71,27 @@
 \headcommand {\beamer@framepages {34}{34}}
 \headcommand {\beamer@subsectionpages {34}{34}}
 \headcommand {\beamer@subsectionentry {0}{3}{4}{35}{Test de comparaison multiple}}
-\headcommand {\slideentry {3}{4}{1}{35/35}{Test de comparaison multiple}{0}}
-\headcommand {\beamer@framepages {35}{35}}
-\headcommand {\slideentry {3}{4}{2}{36/36}{Test de comparaison multiple}{0}}
-\headcommand {\beamer@framepages {36}{36}}
-\headcommand {\beamer@subsectionpages {35}{36}}
-\headcommand {\beamer@subsectionentry {0}{3}{5}{37}{Taille d'effet}}
-\headcommand {\slideentry {3}{5}{1}{37/37}{Taille d'effet}{0}}
+\headcommand {\slideentry {3}{4}{1}{35/36}{Test de comparaison multiple}{0}}
+\headcommand {\beamer@framepages {35}{36}}
+\headcommand {\slideentry {3}{4}{2}{37/37}{Test de comparaison multiple}{0}}
 \headcommand {\beamer@framepages {37}{37}}
-\headcommand {\beamer@subsectionpages {37}{37}}
-\headcommand {\beamer@subsectionentry {0}{3}{6}{38}{Limites des résultats}}
-\headcommand {\slideentry {3}{6}{1}{38/40}{Limites des résultats}{0}}
-\headcommand {\beamer@framepages {38}{40}}
-\headcommand {\beamer@sectionpages {31}{40}}
-\headcommand {\beamer@subsectionpages {38}{40}}
-\headcommand {\sectionentry {4}{Conclusion et perspective}{41}{Conclusion et perspective}{0}}
-\headcommand {\slideentry {4}{0}{1}{41/41}{}{0}}
-\headcommand {\beamer@framepages {41}{41}}
-\headcommand {\slideentry {4}{0}{2}{42/42}{}{0}}
+\headcommand {\beamer@subsectionpages {35}{37}}
+\headcommand {\beamer@subsectionentry {0}{3}{5}{38}{Taille d'effet}}
+\headcommand {\slideentry {3}{5}{1}{38/38}{Taille d'effet}{0}}
+\headcommand {\beamer@framepages {38}{38}}
+\headcommand {\beamer@subsectionpages {38}{38}}
+\headcommand {\beamer@subsectionentry {0}{3}{6}{39}{Limites des résultats}}
+\headcommand {\slideentry {3}{6}{1}{39/41}{Limites des résultats}{0}}
+\headcommand {\beamer@framepages {39}{41}}
+\headcommand {\beamer@sectionpages {31}{41}}
+\headcommand {\beamer@subsectionpages {39}{41}}
+\headcommand {\sectionentry {4}{Conclusion et perspective}{42}{Conclusion et perspective}{0}}
+\headcommand {\slideentry {4}{0}{1}{42/42}{}{0}}
 \headcommand {\beamer@framepages {42}{42}}
-\headcommand {\beamer@partpages {1}{42}}
-\headcommand {\beamer@subsectionpages {41}{42}}
-\headcommand {\beamer@sectionpages {41}{42}}
-\headcommand {\beamer@documentpages {42}}
+\headcommand {\slideentry {4}{0}{2}{43/43}{}{0}}
+\headcommand {\beamer@framepages {43}{43}}
+\headcommand {\beamer@partpages {1}{43}}
+\headcommand {\beamer@subsectionpages {42}{43}}
+\headcommand {\beamer@sectionpages {42}{43}}
+\headcommand {\beamer@documentpages {43}}
 \headcommand {\gdef \inserttotalframenumber {28}}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.2)  14 AUG 2024 10:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.8.2)  20 AUG 2024 07:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -833,33 +833,33 @@ tawesome5
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 46.
+(hyperref)                removing `\\' on input line 49.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 46.
+(hyperref)                removing `\new@ifnextchar' on input line 49.
 
 (Presentation_final.aux)
 \openout1 = `Presentation_final.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 94.
+LaTeX Font Info:    ... okay on input line 94.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -916,64 +916,64 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 90.
+Package hyperref Info: Link coloring OFF on input line 94.
 
 (Presentation_final.out) (Presentation_final.out)
 \@outlinefile=\write5
 \openout5 = `Presentation_final.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 90.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 94.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 90.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 94.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 90.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 90.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 94.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 90.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 90.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 90.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 94.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 90.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 90.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 90.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 94.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 90.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 90.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 90.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 94.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 90.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 90.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 94.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 90.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 94.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 90.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 90.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 90.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 90.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 90.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 94.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 90.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 90.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 94.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 94.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 9
-0.
+4.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 9
-0.
+4.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 90.
+ut line 94.
 
 (C:\Program Files\MiKTeX\tex/latex/translator\translator-basic-dictionary-Engli
 sh.dict
@@ -999,11 +999,25 @@ Dictionary: translator-numbers-dictionary, Language: English
 lish.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 ) (Presentation_final.nav)
+<ufr.jpeg, id=88, 1080.035pt x 433.62pt>
+File: ufr.jpeg Graphic file (type jpg)
+<use ufr.jpeg>
+Package pdftex.def Info: ufr.jpeg  used on input line 123.
+(pdftex.def)             Requested size: 76.48346pt x 30.70055pt.
+<logo_E3S.PNG, id=90, 254.1495pt x 50.589pt>
+File: logo_E3S.PNG Graphic file (type png)
+<use logo_E3S.PNG>
+Package pdftex.def Info: logo_E3S.PNG  used on input line 123.
+(pdftex.def)             Requested size: 109.2597pt x 21.7482pt.
+
+Overfull \vbox (19.11317pt too high) has occurred while \output is active []
+
+
 
 [1
 
-{C:/Users/toshiba/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(Presentation_final.toc)
+{C:/Users/toshiba/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./ufr.jpeg
+> <./logo_E3S.PNG>] (Presentation_final.toc)
 
 [2
 
@@ -1036,13 +1050,13 @@ Dictionary: translator-theorem-dictionary, Language: English
 [9
 
 ]
-<Extrai_donnée.PNG, id=366, 512.51476pt x 240.9pt>
+<Extrai_donnée.PNG, id=371, 512.51476pt x 240.9pt>
 File: Extrai_donnée.PNG Graphic file (type png)
 <use Extrai_donnée.PNG>
-Package pdftex.def Info: Extrai_donnée.PNG  used on input line 167.
+Package pdftex.def Info: Extrai_donnée.PNG  used on input line 185.
 (pdftex.def)             Requested size: 325.17949pt x 152.84848pt.
 
-Overfull \vbox (13.78899pt too high) detected at line 167
+Overfull \vbox (13.78899pt too high) detected at line 185
  []
 
 
@@ -1051,7 +1065,7 @@ Overfull \vbox (13.78899pt too high) detected at line 167
 
  <./Extrai_donnée.PNG>]
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on i
-nput line 201.
+nput line 219.
 
 (C:\Program Files\MiKTeX\tex/latex/fontawesome5\ufontawesomefree1.fd)
 
@@ -1078,19 +1092,19 @@ nput line 201.
 [16
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 220
+LaTeX Font Info:    Trying to load font information for U+msa on input line 242
 .
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 220
+LaTeX Font Info:    Trying to load font information for U+msb on input line 242
 .
 
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 220.
+ut line 242.
 
 (C:\Program Files\MiKTeX\tex/latex/sansmathaccent\ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1112,20 +1126,20 @@ thkerncmss.
 [20
 
 ]
-<variance_2.PNG, id=689, 486.618pt x 305.34074pt>
+<variance_2.PNG, id=693, 486.618pt x 305.34074pt>
 File: variance_2.PNG Graphic file (type png)
 <use variance_2.PNG>
-Package pdftex.def Info: variance_2.PNG  used on input line 257.
+Package pdftex.def Info: variance_2.PNG  used on input line 283.
 (pdftex.def)             Requested size: 273.83728pt x 171.83295pt.
 
 
 [21
 
  <./variance_2.PNG>]
-<Normalité_2.PNG, id=720, 484.81125pt x 307.1475pt>
+<Normalité_2.PNG, id=724, 484.81125pt x 307.1475pt>
 File: Normalité_2.PNG Graphic file (type png)
 <use Normalité_2.PNG>
-Package pdftex.def Info: Normalité_2.PNG  used on input line 266.
+Package pdftex.def Info: Normalité_2.PNG  used on input line 292.
 (pdftex.def)             Requested size: 273.83728pt x 173.49648pt.
 
 
@@ -1148,7 +1162,7 @@ Package pdftex.def Info: Normalité_2.PNG  used on input line 266.
 [26
 
 ]
-Underfull \hbox (badness 1354) in paragraph at lines 295--295
+Underfull \hbox (badness 1354) in paragraph at lines 322--322
 []\OT1/cmss/m/n/10.95 Soit un mod^^Rele con-tenant les ef-fets $(\OT1/mathkernc
 mss/m/sl/10.95 a[]\OML/cmm/m/it/10.95 ; [] ; \OT1/mathkerncmss/m/sl/10.95 a[]\O
 T1/cmss/m/n/10.95 )$ des fac-teurs
@@ -1219,6 +1233,10 @@ T1/cmss/m/n/10.95 )$ des fac-teurs
 [42
 
 ]
+
+[43
+
+]
 \tf@nav=\write6
 \openout6 = `Presentation_final.nav'.
 
@@ -1234,37 +1252,33 @@ LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
  ***********
 Package rerunfilecheck Info: File `Presentation_final.out' has not changed.
-(rerunfilecheck)             Checksum: 5232FADE989F65DB1D91E59E04FE7BE0;2520.
+(rerunfilecheck)             Checksum: 432610100A679502337408009E4B9326;2525.
  ) 
 Here is how much of TeX's memory you used:
- 30607 strings out of 473903
- 626546 string characters out of 5736389
- 1946908 words of memory out of 5000000
- 52810 multiletter control sequences out of 15000+600000
- 576330 words of font info for 101 fonts, out of 8000000 for 9000
+ 30653 strings out of 473903
+ 627545 string characters out of 5736389
+ 1952908 words of memory out of 5000000
+ 52855 multiletter control sequences out of 15000+600000
+ 576624 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,17n,123p,517b,667s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{Navigation43} has been referenced but does not exis
-t, replaced by a fixed one
-
-<C:/Program Files/MiKTeX/fonts/type1/public/fontawesome5/FontAwesome5Free-Solid
-.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pro
-gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmss12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C
-:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Program Fil
-es/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmssi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmssi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/P
-rogram Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Presentation_final.pdf (42 pages, 560015 bytes).
+ 128i,17n,123p,517b,695s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Program Files/MiKTeX/fonts/type1/public/fontawesome5/FontAwesome5Free-Sol
+id.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
+rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/font
+s/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmss12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb>
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Program F
+iles/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Program Files/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Program Files/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmssi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmssi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/c
+msy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:
+/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Presentation_final.pdf (43 pages, 595288 bytes).
 PDF statistics:
- 1421 PDF objects out of 1440 (max. 8388607)
- 111 named destinations out of 1000 (max. 500000)
- 240 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1452 PDF objects out of 1728 (max. 8388607)
+ 112 named destinations out of 1000 (max. 500000)
+ 250 words of extra memory for PDF output out of 10000 (max. 10000000)
 
